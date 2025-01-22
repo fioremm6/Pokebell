@@ -13,7 +13,40 @@
 		D2AF14D32D3FD7D100A78453 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14D22D3FD7D100A78453 /* Preview Assets.xcassets */; };
 		D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14D92D3FD82E00A78453 /* MessageView.swift */; };
 		D2AF14DC2D3FDE9100A78453 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */; };
+		D2AF14E42D40FB7000A78453 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E32D40FB7000A78453 /* WidgetKit.framework */; };
+		D2AF14E62D40FB7000A78453 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E52D40FB7000A78453 /* SwiftUI.framework */; };
+		D2AF14E92D40FB7000A78453 /* PokebellWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */; };
+		D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */; };
+		D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14EC2D40FB7100A78453 /* Assets.xcassets */; };
+		D2AF14F12D40FB7100A78453 /* PokebellWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
+		D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
+		D2AF14FB2D410CA000A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF14FA2D410CA000A78453 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2AF14EF2D40FB7100A78453 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2AF14C02D3FD7CC00A78453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AF14E02D40FB7000A78453;
+			remoteInfo = PokebellWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2AF14F52D40FB7100A78453 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D2AF14F12D40FB7100A78453 /* PokebellWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D2AF14C82D3FD7CC00A78453 /* Pokebell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokebell.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +56,14 @@
 		D2AF14D22D3FD7D100A78453 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2AF14D92D3FD82E00A78453 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PokebellWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AF14E32D40FB7000A78453 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D2AF14E52D40FB7000A78453 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellWidgetBundle.swift; sourceTree = "<group>"; };
+		D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellWidget.swift; sourceTree = "<group>"; };
+		D2AF14EC2D40FB7100A78453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2AF14EE2D40FB7100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +71,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AF14FB2D410CA000A78453 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AF14DE2D40FB7000A78453 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AF14E62D40FB7000A78453 /* SwiftUI.framework in Frameworks */,
+				D2AF14E42D40FB7000A78453 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,7 +90,10 @@
 		D2AF14BF2D3FD7CC00A78453 = {
 			isa = PBXGroup;
 			children = (
+				D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */,
 				D2AF14CA2D3FD7CC00A78453 /* Pokebell */,
+				D2AF14E72D40FB7000A78453 /* PokebellWidget */,
+				D2AF14E22D40FB7000A78453 /* Frameworks */,
 				D2AF14C92D3FD7CC00A78453 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AF14C82D3FD7CC00A78453 /* Pokebell.app */,
+				D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +128,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D2AF14E22D40FB7000A78453 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2AF14E32D40FB7000A78453 /* WidgetKit.framework */,
+				D2AF14E52D40FB7000A78453 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2AF14E72D40FB7000A78453 /* PokebellWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */,
+				D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */,
+				D2AF14EC2D40FB7100A78453 /* Assets.xcassets */,
+				D2AF14EE2D40FB7100A78453 /* Info.plist */,
+			);
+			path = PokebellWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,15 +158,37 @@
 				D2AF14C42D3FD7CC00A78453 /* Sources */,
 				D2AF14C52D3FD7CC00A78453 /* Frameworks */,
 				D2AF14C62D3FD7CC00A78453 /* Resources */,
+				D2AF14F52D40FB7100A78453 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2AF14F02D40FB7100A78453 /* PBXTargetDependency */,
+			);
+			name = Pokebell;
+			packageProductDependencies = (
+				D2AF14FA2D410CA000A78453 /* FirebaseFirestore */,
+			);
+			productName = Pokebell;
+			productReference = D2AF14C82D3FD7CC00A78453 /* Pokebell.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2AF14E02D40FB7000A78453 /* PokebellWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2AF14F22D40FB7100A78453 /* Build configuration list for PBXNativeTarget "PokebellWidgetExtension" */;
+			buildPhases = (
+				D2AF14DD2D40FB7000A78453 /* Sources */,
+				D2AF14DE2D40FB7000A78453 /* Frameworks */,
+				D2AF14DF2D40FB7000A78453 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Pokebell;
-			productName = Pokebell;
-			productReference = D2AF14C82D3FD7CC00A78453 /* Pokebell.app */;
-			productType = "com.apple.product-type.application";
+			name = PokebellWidgetExtension;
+			productName = PokebellWidgetExtension;
+			productReference = D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -106,6 +203,9 @@
 					D2AF14C72D3FD7CC00A78453 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					D2AF14E02D40FB7000A78453 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 				};
 			};
 			buildConfigurationList = D2AF14C32D3FD7CC00A78453 /* Build configuration list for PBXProject "Pokebell" */;
@@ -117,11 +217,15 @@
 				Base,
 			);
 			mainGroup = D2AF14BF2D3FD7CC00A78453;
+			packageReferences = (
+				D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D2AF14C92D3FD7CC00A78453 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D2AF14C72D3FD7CC00A78453 /* Pokebell */,
+				D2AF14E02D40FB7000A78453 /* PokebellWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -133,6 +237,16 @@
 			files = (
 				D2AF14D32D3FD7D100A78453 /* Preview Assets.xcassets in Resources */,
 				D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */,
+				D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AF14DF2D40FB7000A78453 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */,
+				D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +264,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2AF14DD2D40FB7000A78453 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AF14E92D40FB7000A78453 /* PokebellWidgetBundle.swift in Sources */,
+				D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2AF14F02D40FB7100A78453 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AF14E02D40FB7000A78453 /* PokebellWidgetExtension */;
+			targetProxy = D2AF14EF2D40FB7100A78453 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D2AF14D42D3FD7D100A78453 /* Debug */ = {
@@ -275,6 +406,7 @@
 		D2AF14D72D3FD7D100A78453 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +436,7 @@
 		D2AF14D82D3FD7D100A78453 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -324,6 +457,60 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2AF14F32D40FB7100A78453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LAJ6J7GY39;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokebellWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PokebellWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebell.PokebellWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2AF14F42D40FB7100A78453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LAJ6J7GY39;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokebellWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PokebellWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebell.PokebellWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -351,7 +538,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D2AF14F22D40FB7100A78453 /* Build configuration list for PBXNativeTarget "PokebellWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2AF14F32D40FB7100A78453 /* Debug */,
+				D2AF14F42D40FB7100A78453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D2AF14FA2D410CA000A78453 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D2AF14C02D3FD7CC00A78453 /* Project object */;
 }
