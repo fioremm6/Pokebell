@@ -22,6 +22,11 @@
 		D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
 		D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
 		D2AF14FB2D410CA000A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF14FA2D410CA000A78453 /* FirebaseFirestore */; };
+		D2AF15292D4280DF00A78453 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14EE2D40FB7100A78453 /* Info.plist */; };
+		D2AF152A2D4280E200A78453 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14EE2D40FB7100A78453 /* Info.plist */; };
+		D2AF152C2D42822900A78453 /* Dott-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF152B2D42822900A78453 /* Dott-Font.ttf */; };
+		D2AF152D2D42822900A78453 /* Dott-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF152B2D42822900A78453 /* Dott-Font.ttf */; };
+		D2AF152E2D42826900A78453 /* PokebellWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,8 @@
 		D2AF14EC2D40FB7100A78453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AF14EE2D40FB7100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2AF152B2D42822900A78453 /* Dott-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dott-Font.ttf"; sourceTree = "<group>"; };
+		D2AF152F2D42827F00A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +117,7 @@
 		D2AF14CA2D3FD7CC00A78453 /* Pokebell */ = {
 			isa = PBXGroup;
 			children = (
+				D2AF152F2D42827F00A78453 /* Info.plist */,
 				D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */,
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
@@ -143,6 +151,7 @@
 				D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */,
 				D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */,
 				D2AF14EC2D40FB7100A78453 /* Assets.xcassets */,
+				D2AF152B2D42822900A78453 /* Dott-Font.ttf */,
 				D2AF14EE2D40FB7100A78453 /* Info.plist */,
 			);
 			path = PokebellWidget;
@@ -237,7 +246,9 @@
 			files = (
 				D2AF14D32D3FD7D100A78453 /* Preview Assets.xcassets in Resources */,
 				D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */,
+				D2AF15292D4280DF00A78453 /* Info.plist in Resources */,
 				D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
+				D2AF152C2D42822900A78453 /* Dott-Font.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +256,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AF152D2D42822900A78453 /* Dott-Font.ttf in Resources */,
+				D2AF152A2D4280E200A78453 /* Info.plist in Resources */,
 				D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */,
 				D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
 			);
@@ -259,6 +272,7 @@
 			files = (
 				D2AF14CE2D3FD7CC00A78453 /* ContentView.swift in Sources */,
 				D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */,
+				D2AF152E2D42826900A78453 /* PokebellWidgetBundle.swift in Sources */,
 				D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */,
 				D2AF14DC2D3FDE9100A78453 /* PhoneView.swift in Sources */,
 			);
@@ -415,6 +429,7 @@
 				DEVELOPMENT_TEAM = LAJ6J7GY39;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokebell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,6 +460,7 @@
 				DEVELOPMENT_TEAM = LAJ6J7GY39;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokebell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

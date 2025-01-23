@@ -49,39 +49,101 @@ struct PokebellWidgetEntryView : View {
                     .fill(.green)
                     .frame(height: 60)
                 Text("１２３４５")
+                    .font(.custom("Dott-Font", size: 10))
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding([.top,.leading,.trailing],8)
             
             Spacer()
-                
-        }
-    }
-}
             
-
-struct PokebellWidget: Widget {
-    let kind: String = "PokebellWidget"
-
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                PokebellWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                PokebellWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        //        VStack(spacing: 0) {
+        //                    // 上部のディスプレイ部分
+        //                    ZStack {
+        //                        // ディスプレイの背景
+        //                        Rectangle()
+        //                            .fill(.green)
+        //                            .frame(height: 60)
+        //                            .cornerRadius(8) // 上部に角丸を適用
+        //
+        //                        // テキスト表示
+        //                        Text("１２３４５")
+        //                            .font(.custom("Dott-Font", size: 16))
+        //                            .foregroundColor(.white)
+        //                            .padding(.horizontal, 12)
+        //                            .frame(maxWidth: .infinity, alignment: .leading)
+        //                    }
+        //                    .padding([.top, .leading, .trailing], 8)
+        //
+        //                    // 本体部分
+        //                    ZStack {
+        //                        // 本体全体の背景
+        //                        RoundedRectangle(cornerRadius: 12)
+        //                            .fill(
+        //                                LinearGradient(
+        //                                    gradient: Gradient(colors: [Color.gray.opacity(0.9), Color.gray.opacity(0.7)]),
+        //                                    startPoint: .topLeading,
+        //                                    endPoint: .bottomTrailing
+        //                                )
+        //                            )
+        //                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 3, y: 3)
+        //
+        //                        // 右下の曲線のデザイン
+        //                        Path { path in
+        //                            let width: CGFloat = 300 // 親ビュー幅（固定値を調整可能）
+        //                            let height: CGFloat = 100
+        //                            
+        //                            path.move(to: CGPoint(x: 0, y: height)) // 左下から始まる
+        //                            path.addLine(to: CGPoint(x: width * 0.6, y: height)) // 直線で右方向へ
+        //                            path.addQuadCurve(
+        //                                to: CGPoint(x: width, y: height * 0.6), // 曲線の終点
+        //                                control: CGPoint(x: width * 0.8, y: height) // 制御点
+        //                            )
+        //                            path.addLine(to: CGPoint(x: width, y: 0)) // 上部へ
+        //                            path.addLine(to: CGPoint(x: 0, y: 0)) // 左上まで直線
+        //                            path.closeSubpath()
+        //                        }
+        //                        .fill(
+        //                            LinearGradient(
+        //                                gradient: Gradient(colors: [Color.gray.opacity(0.8), Color.gray.opacity(0.6)]),
+        //                                startPoint: .top,
+        //                                endPoint: .bottom
+        //                            )
+        //                        )
+        //                    }
+        //                    .frame(height: 100) // 本体部分の高さ
+        //                }
+        //                .background(Color.purple.opacity(0.2)) // ウィジェット全体の背景
+        //                .cornerRadius(12)
+        //                .padding()
+        //            }
     }
-}
-
-#Preview(as: .systemMedium) {
-    PokebellWidget()
-} timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    
+    
+    
+    struct PokebellWidget: Widget {
+        let kind: String = "PokebellWidget"
+        
+        var body: some WidgetConfiguration {
+            StaticConfiguration(kind: kind, provider: Provider()) { entry in
+                if #available(iOS 17.0, *) {
+                    PokebellWidgetEntryView(entry: entry)
+                        .containerBackground(.fill.tertiary, for: .widget)
+                } else {
+                    PokebellWidgetEntryView(entry: entry)
+                        .padding()
+                        .background()
+                }
+            }
+            .configurationDisplayName("My Widget")
+            .description("This is an example widget.")
+        }
+    }
+    
+    #Preview(as: .systemMedium) {
+        PokebellWidget()
+    } timeline: {
+        SimpleEntry(date: .now, emoji: "😀")
+        SimpleEntry(date: .now, emoji: "🤩")
+    }
 }
