@@ -25,7 +25,8 @@ struct PhoneView: View {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
                 ForEach(["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"], id: \.self) { number in
                     Button(action: {
-                        currentInput.append(number)
+                        handleInput(number)
+                        
                     }) {
                         Text(number)
                             .font(.title)
@@ -69,9 +70,19 @@ struct PhoneView: View {
                    errorMessage = "正しい形式で入力してください:  ##"
                    return
                }
-               messageModel.messages.append(currentInput)
-               currentInput = ""
-               errorMessage = nil
+        Task {
+            do {
+                try await FirestoreClient.postMessage(text: currentInput, receiver: myNumber)
+                currentInput = ""
+                errorMessage = nil
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+       
+        
+        
+//               messageModel.messages.append(currentInput)
            }
     private func resetInput() {
             currentInput = ""

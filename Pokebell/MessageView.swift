@@ -14,8 +14,17 @@ struct MessageView: View {
         NavigationView {
             List {
                 ForEach(messageModel.messages, id: \.self) { message in
-                    Text(message)
+                    Text(message.text)
                         .padding()
+                }
+            }
+            .refreshable {
+                Task {
+                    do {
+                        messageModel.messages = try await FirestoreClient.fetchMessage()
+                    } catch{
+                        print(error.localizedDescription)
+                    }
                 }
             }
             .navigationTitle("メッセージ履歴")

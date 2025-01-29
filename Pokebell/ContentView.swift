@@ -8,7 +8,7 @@
 import SwiftUI
 
 class MessageModel: ObservableObject {
-    @Published var messages: [String] = []
+    @Published var messages: [Message] = []
 }
 struct ContentView: View {
         @StateObject private var messageModel = MessageModel()

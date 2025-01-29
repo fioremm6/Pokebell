@@ -22,6 +22,11 @@
 		D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
 		D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
 		D2AF14FB2D410CA000A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF14FA2D410CA000A78453 /* FirebaseFirestore */; };
+		D2AF15362D4A351C00A78453 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15352D4A351C00A78453 /* Message.swift */; };
+		D2AF15372D4A351C00A78453 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15352D4A351C00A78453 /* Message.swift */; };
+		D2AF15392D4A38D600A78453 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15382D4A38D600A78453 /* FirestoreClient.swift */; };
+		D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15382D4A38D600A78453 /* FirestoreClient.swift */; };
+		D2AF153C2D4A403800A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF153B2D4A403800A78453 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,8 @@
 		D2AF14EE2D40FB7100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2AF15342D4A2FD100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D2AF15352D4A351C00A78453 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		D2AF15382D4A38D600A78453 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +89,7 @@
 			files = (
 				D2AF14E62D40FB7000A78453 /* SwiftUI.framework in Frameworks */,
 				D2AF14E42D40FB7000A78453 /* WidgetKit.framework in Frameworks */,
+				D2AF153C2D4A403800A78453 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +123,8 @@
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
 				D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */,
+				D2AF15352D4A351C00A78453 /* Message.swift */,
+				D2AF15382D4A38D600A78453 /* FirestoreClient.swift */,
 				D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */,
 				D2AF14D12D3FD7D100A78453 /* Preview Content */,
 			);
@@ -188,6 +198,9 @@
 			dependencies = (
 			);
 			name = PokebellWidgetExtension;
+			packageProductDependencies = (
+				D2AF153B2D4A403800A78453 /* FirebaseFirestore */,
+			);
 			productName = PokebellWidgetExtension;
 			productReference = D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -261,7 +274,9 @@
 			files = (
 				D2AF14CE2D3FD7CC00A78453 /* ContentView.swift in Sources */,
 				D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */,
+				D2AF15362D4A351C00A78453 /* Message.swift in Sources */,
 				D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */,
+				D2AF15392D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D2AF14DC2D3FDE9100A78453 /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AF15372D4A351C00A78453 /* Message.swift in Sources */,
 				D2AF14E92D40FB7000A78453 /* PokebellWidgetBundle.swift in Sources */,
+				D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +583,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		D2AF14FA2D410CA000A78453 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D2AF153B2D4A403800A78453 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
