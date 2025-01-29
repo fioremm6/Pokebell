@@ -64,6 +64,7 @@
 		D2AF14EC2D40FB7100A78453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AF14EE2D40FB7100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2AF15342D4A2FD100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +91,6 @@
 		D2AF14BF2D3FD7CC00A78453 = {
 			isa = PBXGroup;
 			children = (
-				D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */,
 				D2AF14CA2D3FD7CC00A78453 /* Pokebell */,
 				D2AF14E72D40FB7000A78453 /* PokebellWidget */,
 				D2AF14E22D40FB7000A78453 /* Frameworks */,
@@ -110,6 +110,7 @@
 		D2AF14CA2D3FD7CC00A78453 /* Pokebell */ = {
 			isa = PBXGroup;
 			children = (
+				D2AF15342D4A2FD100A78453 /* Info.plist */,
 				D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */,
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
@@ -140,6 +141,7 @@
 		D2AF14E72D40FB7000A78453 /* PokebellWidget */ = {
 			isa = PBXGroup;
 			children = (
+				D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */,
 				D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */,
 				D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */,
 				D2AF14EC2D40FB7100A78453 /* Assets.xcassets */,
@@ -415,6 +417,7 @@
 				DEVELOPMENT_TEAM = LAJ6J7GY39;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokebell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,6 +448,7 @@
 				DEVELOPMENT_TEAM = LAJ6J7GY39;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokebell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
