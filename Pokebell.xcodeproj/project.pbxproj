@@ -27,6 +27,7 @@
 		D2AF15392D4A38D600A78453 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15382D4A38D600A78453 /* FirestoreClient.swift */; };
 		D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15382D4A38D600A78453 /* FirestoreClient.swift */; };
 		D2AF153C2D4A403800A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF153B2D4A403800A78453 /* FirebaseFirestore */; };
+		D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		D2AF15342D4A2FD100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D2AF15352D4A351C00A78453 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D2AF15382D4A38D600A78453 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
+		D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PokebellWidgetExtension.entitlements; sourceTree = "<group>"; };
+		D2AF153E2D537E4D00A78453 /* Pokebell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pokebell.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 		D2AF14BF2D3FD7CC00A78453 = {
 			isa = PBXGroup;
 			children = (
+				D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */,
 				D2AF14CA2D3FD7CC00A78453 /* Pokebell */,
 				D2AF14E72D40FB7000A78453 /* PokebellWidget */,
 				D2AF14E22D40FB7000A78453 /* Frameworks */,
@@ -118,6 +122,7 @@
 		D2AF14CA2D3FD7CC00A78453 /* Pokebell */ = {
 			isa = PBXGroup;
 			children = (
+				D2AF153E2D537E4D00A78453 /* Pokebell.entitlements */,
 				D2AF15342D4A2FD100A78453 /* Info.plist */,
 				D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */,
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
@@ -261,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */,
+				D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */,
 				D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +434,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pokebell/Pokebell.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
@@ -459,6 +466,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pokebell/Pokebell.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
@@ -489,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LAJ6J7GY39;
@@ -516,6 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LAJ6J7GY39;

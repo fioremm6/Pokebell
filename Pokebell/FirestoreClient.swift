@@ -8,19 +8,19 @@
 import Foundation
 import FirebaseFirestore
 
-let myNumber = "00000"
+let receiver = "00000"
 
 class FirestoreClient {
     
     static let messageRef = Firestore.firestore().collection("messages")
     
-    static func postMessage(text: String, receiver: String) async throws {
+    static func postMessage(text: String, receiver: String, myNumber: String) async throws {
         let message = Message(sender: myNumber, receiver: receiver, text: text, date: Timestamp())
         let encodedMessage = try Firestore.Encoder().encode(message)
         try await messageRef.addDocument(data: encodedMessage)
     }
     
     static func fetchMessage() async throws -> [Message] {
-        try await messageRef.whereField("receiver", isEqualTo: myNumber).order(by: "date", descending: true).getDocuments().documents.compactMap { try? $0.data(as: Message.self) }
+        try await messageRef.whereField("receiver", isEqualTo: receiver).order(by: "date", descending: true).getDocuments().documents.compactMap { try? $0.data(as: Message.self) }
     }
 }

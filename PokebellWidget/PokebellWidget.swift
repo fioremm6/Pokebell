@@ -37,24 +37,29 @@ struct Provider: TimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let emoji: String
+    
 }
 
 struct PokebellWidgetEntryView : View {
     var entry: Provider.Entry
+    var newData: String
     
     var body: some View {
         VStack {
             ZStack {
-                Rectangle()
-                    .fill(.green)
-                    .frame(height: 60)
-                Text("１２３４５")
-                    .font(.custom("Dott-Font", size: 40))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                Image("bell.bg")
+                    .resizable()
+                    .scaledToFill()
+                HStack {
+                    Text(newData)
+                        .foregroundStyle(Color("gray"))
+                        .font(.custom("Dott-Font", size: 25))
+                        .padding(EdgeInsets(top: 10, leading: 60, bottom: 40, trailing: 10))
+                    Spacer()
+                }
+                    
             }
-            .padding([.top,.leading,.trailing],8)
-
-            Spacer()
+            
 
         }
 //                VStack(spacing: 0) {
@@ -127,10 +132,10 @@ struct PokebellWidgetEntryView : View {
         var body: some WidgetConfiguration {
             StaticConfiguration(kind: kind, provider: Provider()) { entry in
                 if #available(iOS 17.0, *) {
-                    PokebellWidgetEntryView(entry: entry)
+                    PokebellWidgetEntryView(entry: entry, newData: "9999")
                         .containerBackground(.fill.tertiary, for: .widget)
                 } else {
-                    PokebellWidgetEntryView(entry: entry)
+                    PokebellWidgetEntryView(entry: entry, newData: "66666")
                         .padding()
                         .background()
                 }

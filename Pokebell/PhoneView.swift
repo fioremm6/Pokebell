@@ -9,71 +9,109 @@ import SwiftUI
 
 struct PhoneView: View {
     @EnvironmentObject var messageModel: MessageModel
-    @State private var currentInput: String = ""
+    @State private var phonenumInput: String = ""
+    @State private var textnumInput: String = ""
     @State private var errorMessage: String? = nil
+    @State private var myNumber: String = ""
+    @FocusState private var isFocused: Bool
     
+    
+
+ 
     var body: some View {
-        VStack {
-            Text("数字を入力してください")
-                .font(.headline)
-                .padding()
-            
-            Text("入力中: \(currentInput)")
-                .font(.subheadline)
-                .padding(.bottom)
-            
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
-                ForEach(["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"], id: \.self) { number in
-                    Button(action: {
-                        handleInput(number)
+        ZStack {
+            Image("pokebell.bc")
+                .resizable()
+                .ignoresSafeArea()
+            HStack {
+                VStack {
+                    VStack {
+                        HStack {
+                            Image(systemName: "phone.fill")
+                            Text(":")
+                            Text("\(phonenumInput)")
+                                
+                        }
+                        //            TextField(text: $myNumber, prompt: Text("Number")){
+                        //
+                        //            }
+                        //                .keyboardType(.numberPad)
                         
-                    }) {
-                        Text(number)
-                            .font(.title)
-                            .frame(width: 70, height: 70)
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(35)
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                            Text(":")
+                            Text("\(textnumInput)")
+                                .font(.subheadline)
+                        }
+                    }
+                    .padding(EdgeInsets(top: 120, leading: 120, bottom: 0, trailing: 20))
+                    
+                   
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
+                            ForEach(["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"], id: \.self) { number in
+                                Button(action: {
+                                    handleInput(number)
+                                    
+                                }) {
+                                    Text(number)
+                                        .foregroundColor(.white)
+                                        .frame(width: 60, height: 60)
+                                        .background(Color("gray"))
+                                        .cornerRadius(35)
+                                }
+                            }
+                       
+                    }
+                    .padding(EdgeInsets(top: 100, leading: 120, bottom: 50, trailing: 10))
+                    Button(action: resetInput) {
+                        Text("リセット")
+                            .font(.title2)
+                            .frame(maxWidth: .infinity, minHeight: 50)
+                            .background(Color("gray"))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(EdgeInsets(top: 0, leading: 120, bottom: 20, trailing: 20))
+                    }
+                    .padding(.bottom)
+                    
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding(.bottom)
                     }
                 }
+                
             }
+            
             .padding()
-            Button(action: resetInput) {
-                            Text("リセット")
-                                .font(.title2)
-                                .frame(maxWidth: .infinity, minHeight: 50)
-                                .background(Color.red)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .padding([.leading, .trailing])
-                        }
-                        .padding(.bottom)
-                        
-            if let errorMessage = errorMessage {
-                            Text(errorMessage)
-                                .foregroundColor(.red)
-                                .padding(.bottom)
-                        }
         }
-        .padding()
     }
+
     
     private func handleInput(_ number: String) {
-                   currentInput.append(number)
-                   if  currentInput.hasSuffix("##") {
+//        guard let UserDefaults(suiteName: "group.Pokebell")?.object(forKey: "number")
+        
+        if phonenumInput.count >= 11 {
+            textnumInput.append(number)
+        } else {
+            phonenumInput.append(number)
+        }
+                   if  textnumInput.hasSuffix("##") {
                        sendMessage()
                    }
                }
                
       
     private func sendMessage() {
-        guard  currentInput.hasSuffix("##") else {
+        guard  textnumInput.hasSuffix("##") else {
                    errorMessage = "正しい形式で入力してください:  ##"
                    return
                }
         Task {
             do {
-                try await FirestoreClient.postMessage(text: currentInput, receiver: myNumber)
-                currentInput = ""
+                try await FirestoreClient.postMessage(text: textnumInput, receiver: phonenumInput,myNumber: myNumber)
+                phonenumInput = ""
+                textnumInput = ""
                 errorMessage = nil
             } catch {
                 print(error.localizedDescription)
@@ -84,10 +122,16 @@ struct PhoneView: View {
         
 //               messageModel.messages.append(currentInput)
            }
+    
     private func resetInput() {
-            currentInput = ""
+        phonenumInput = ""
+            textnumInput = ""
             errorMessage = nil
         }
+    private func sendMynumber() {
+        textnumInput = ""
+        errorMessage = nil
+    }
     
 }
 
