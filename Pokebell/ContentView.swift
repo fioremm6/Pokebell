@@ -27,6 +27,7 @@ struct ContentView: View {
                     }
                     .environmentObject(messageModel) // 共有データ
             }
+            .accentColor(Color("gray"))
         }
     }
 

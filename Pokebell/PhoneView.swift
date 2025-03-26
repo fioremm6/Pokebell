@@ -15,7 +15,7 @@ struct PhoneView: View {
     @State private var myNumber: String = ""
     @FocusState private var isFocused: Bool
     
-    
+    @State var isRegistered = false
 
  
     var body: some View {
@@ -26,25 +26,28 @@ struct PhoneView: View {
             HStack {
                 VStack {
                     VStack {
-                        HStack {
-                            Image(systemName: "phone.fill")
-                            Text(":")
-                            Text("\(phonenumInput)")
-                                
-                        }
-                        //            TextField(text: $myNumber, prompt: Text("Number")){
-                        //
-                        //            }
-                        //                .keyboardType(.numberPad)
-                        
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                            Text(":")
-                            Text("\(textnumInput)")
-                                .font(.subheadline)
+                        VStack {
+                            
+                            Text(isRegistered ? "送り先の電話番号とメッセージを入力し、最後に＃＃をつけてください" : "電話番号を登録してください")
+                            VStack {
+                                HStack {
+                                    Image(systemName: "phone.fill")
+                                    Text(":")
+                                    Text("\(phonenumInput)")
+                                    Spacer()
+                                }
+                                HStack {
+                                    Image(systemName: "envelope.fill")
+                                    Text(":")
+                                    Text("\(textnumInput)")
+                                    Spacer()
+                                }
+                            }
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 0))
+                    
                         }
                     }
-                    .padding(EdgeInsets(top: 120, leading: 120, bottom: 0, trailing: 20))
+                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 40, trailing: 20))
                     
                    
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
@@ -58,19 +61,25 @@ struct PhoneView: View {
                                         .frame(width: 60, height: 60)
                                         .background(Color("gray"))
                                         .cornerRadius(35)
+                                        .shadow(radius: 5)
                                 }
                             }
                        
                     }
-                    .padding(EdgeInsets(top: 100, leading: 120, bottom: 50, trailing: 10))
-                    Button(action: resetInput) {
-                        Text("リセット")
-                            .font(.title2)
-                            .frame(maxWidth: .infinity, minHeight: 50)
-                            .background(Color("gray"))
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .padding(EdgeInsets(top: 0, leading: 120, bottom: 20, trailing: 20))
+                    .padding(EdgeInsets(top: 70, leading: 20, bottom: 20, trailing: 20))
+                    HStack {
+                        Button(action: deleteInput) {
+                            Image(systemName: "delete.left")
+                        }
+                        Button(action: resetInput) {
+                            Text("リセット")
+                                .font(.title2)
+                                .frame(maxWidth: .infinity, minHeight: 30)
+                                .background(Color("gray"))
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .padding(EdgeInsets(top: 0, leading: 120, bottom: 20, trailing: 20))
+                        }
                     }
                     .padding(.bottom)
                     
@@ -122,6 +131,9 @@ struct PhoneView: View {
         
 //               messageModel.messages.append(currentInput)
            }
+    private func deleteInput() {
+        
+    }
     
     private func resetInput() {
         phonenumInput = ""

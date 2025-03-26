@@ -11,8 +11,6 @@ struct MessageView: View {
     @EnvironmentObject var messageModel: MessageModel
     
     var body: some View {
-        ZStack {
-            Color("pokepink")
             NavigationView {
                 List {
                     ForEach(messageModel.messages, id: \.self) { message in
@@ -33,10 +31,11 @@ struct MessageView: View {
                     }
                 }
                 .navigationTitle("メッセージ履歴")
+                .background(Color("pokepink"))
             }
         }
     }
-}
+
 
 
     
