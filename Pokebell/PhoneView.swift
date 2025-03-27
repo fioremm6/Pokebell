@@ -144,7 +144,11 @@ struct PhoneView: View {
 //               messageModel.messages.append(currentInput)
            }
     private func deleteInput() {
-        
+        if phonenumInput.count >= 11 {
+            textnumInput.dropLast()
+        }else {
+            phonenumInput.dropLast()
+        }
     }
     
     private func resetInput() {
