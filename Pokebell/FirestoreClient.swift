@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseFirestore
 
-let receiver = "00000"
 
 class FirestoreClient {
     
@@ -20,7 +19,8 @@ class FirestoreClient {
         try await messageRef.addDocument(data: encodedMessage)
     }
     
-    static func fetchMessage() async throws -> [Message] {
-        try await messageRef.whereField("receiver", isEqualTo: receiver).order(by: "date", descending: true).getDocuments().documents.compactMap { try? $0.data(as: Message.self) }
+    static func fetchMessage(myNumber: String) async throws -> [Message] {
+        try await messageRef.whereField("receiver", isEqualTo: myNumber).order(by: "date", descending: true).getDocuments().documents.compactMap { try? $0.data(as: Message.self) }
     }
+    
 }

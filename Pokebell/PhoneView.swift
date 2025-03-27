@@ -12,10 +12,11 @@ struct PhoneView: View {
     @State private var phonenumInput: String = ""
     @State private var textnumInput: String = ""
     @State private var errorMessage: String? = nil
-    @State private var myNumber: String = ""
     @FocusState private var isFocused: Bool
     
     @State var isRegistered = false
+    
+    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebell")) var phoneNumber = ""
 
  
     var body: some View {
@@ -27,8 +28,8 @@ struct PhoneView: View {
                 VStack {
                     VStack {
                         VStack {
-                            
-                            Text(isRegistered ? "送り先の電話番号とメッセージを入力し、最後に＃＃をつけてください" : "電話番号を登録してください")
+                            Text(phoneNumber)
+                            Text(phoneNumber.isEmpty ? "自分の電話番号が登録されていません。電話番号を入力し、最後に＃＃をつけてください。" : "送り先の電話番号とメッセージを入力し、最後に＃＃をつけてください")
                             VStack {
                                 HStack {
                                     Image(systemName: "phone.fill")
@@ -94,6 +95,9 @@ struct PhoneView: View {
             
             .padding()
         }
+        .onAppear {
+            print(UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebell")?.string(forKey: "phoneNumber"))
+        }
     }
 
     
@@ -116,14 +120,22 @@ struct PhoneView: View {
                    errorMessage = "正しい形式で入力してください:  ##"
                    return
                }
-        Task {
-            do {
-                try await FirestoreClient.postMessage(text: textnumInput, receiver: phonenumInput,myNumber: myNumber)
-                phonenumInput = ""
-                textnumInput = ""
-                errorMessage = nil
-            } catch {
-                print(error.localizedDescription)
+        if phoneNumber.isEmpty {
+            phoneNumber = phonenumInput
+            phonenumInput = ""
+            textnumInput = ""
+            
+        } else {
+//
+            Task {
+                do {
+                    try await FirestoreClient.postMessage(text: String(textnumInput.dropLast(2)), receiver: phonenumInput,myNumber: phoneNumber)
+                    phonenumInput = ""
+                    textnumInput = ""
+                    errorMessage = nil
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
         }
        

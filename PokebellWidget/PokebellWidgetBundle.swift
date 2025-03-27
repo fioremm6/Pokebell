@@ -7,9 +7,15 @@
 
 import WidgetKit
 import SwiftUI
+import Firebase
 
 @main
 struct PokebellWidgetBundle: WidgetBundle {
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Widget {
         PokebellWidget()
     }

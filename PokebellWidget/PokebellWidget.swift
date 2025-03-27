@@ -9,146 +9,88 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+    func placeholder(in context: Context) -> MessageEntry {
+        .placeholder
     }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
-        completion(entry)
+    
+    func getSnapshot(in context: Context, completion: @escaping (MessageEntry) -> ()) {
+        completion(.placeholder)
     }
-
+    
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
+        Task {
+            let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 15, to: .now) ?? .now.addingTimeInterval(15 * 60)
+            do {
+                print(UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebell")?.string(forKey: "phoneNumber"))
+                let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
+                let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
+                let latestMessage = messages[0]
+                let entry = MessageEntry(sender: latestMessage.sender, message: latestMessage.text)
+                let timeline = Timeline(
+                    entries: [entry],
+                    policy: .after(nextUpdateDate)
+                )
+                completion(timeline)
+            } catch {
+                let timeline = Timeline(
+                    entries: [MessageEntry(sender: "メッセージの取得に失敗しました。", message: "")],
+                    policy: .after(nextUpdateDate)
+                )
+                completion(timeline)
+            }
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
+struct MessageEntry: TimelineEntry {
+    let date: Date = .now
+    let sender: String
+    let message: String
+    
+    static let placeholder = Self(sender: "", message: "")
     
 }
 
 struct PokebellWidgetEntryView : View {
     var entry: Provider.Entry
-    var newData: String
     
     var body: some View {
         VStack {
-            ZStack {
-                Image("bell.bg")
-                    .resizable()
-                    .scaledToFill()
-                HStack {
-                    Text(newData)
-                        .foregroundStyle(Color("gray"))
-                        .font(.custom("Dott-Font", size: 25))
-                        .padding(EdgeInsets(top: 10, leading: 60, bottom: 40, trailing: 10))
-                    Spacer()
-                }
-                    
-            }
             
-
-        }
-//                VStack(spacing: 0) {
-//                            // 上部のディスプレイ部分
-//                            ZStack {
-//                                // ディスプレイの背景
-//                                Rectangle()
-//                                    .fill(.green)
-//                                    .frame(height: 60)
-//                                    .cornerRadius(8) // 上部に角丸を適用
-//        
-//                                // テキスト表示
-//                                Text("１２３４５")
-//                                    .font(.custom("Dott-Font", size: 16))
-//                                    .foregroundColor(.white)
-//                                    .padding(.horizontal, 12)
-//                                    .frame(maxWidth: .infinity, alignment: .leading)
-//                            }
-//                            .padding([.top, .leading, .trailing], 8)
-//        
-//                            // 本体部分
-//                            ZStack {
-//                                // 本体全体の背景
-//                                RoundedRectangle(cornerRadius: 12)
-//                                    .fill(
-//                                        LinearGradient(
-//                                            gradient: Gradient(colors: [Color.gray.opacity(0.9), Color.gray.opacity(0.7)]),
-//                                            startPoint: .topLeading,
-//                                            endPoint: .bottomTrailing
-//                                        )
-//                                    )
-//                                    .shadow(color: Color.black.opacity(0.3), radius: 5, x: 3, y: 3)
-//        
-//                                // 右下の曲線のデザイン
-//                                Path { path in
-//                                    let width: CGFloat = 300 // 親ビュー幅（固定値を調整可能）
-//                                    let height: CGFloat = 100
-//                                    
-//                                    path.move(to: CGPoint(x: 0, y: height)) // 左下から始まる
-//                                    path.addLine(to: CGPoint(x: width * 0.6, y: height)) // 直線で右方向へ
-//                                    path.addQuadCurve(
-//                                        to: CGPoint(x: width, y: height * 0.6), // 曲線の終点
-//                                        control: CGPoint(x: width * 0.8, y: height) // 制御点
-//                                    )
-//                                    path.addLine(to: CGPoint(x: width, y: 0)) // 上部へ
-//                                    path.addLine(to: CGPoint(x: 0, y: 0)) // 左上まで直線
-//                                    path.closeSubpath()
-//                                }
-//                                .fill(
-//                                    LinearGradient(
-//                                        gradient: Gradient(colors: [Color.gray.opacity(0.8), Color.gray.opacity(0.6)]),
-//                                        startPoint: .top,
-//                                        endPoint: .bottom
-//                                    )
-//                                )
-//                            }
-//                            .frame(height: 100) // 本体部分の高さ
-//                        }
-//                        .background(Color.purple.opacity(0.2)) // ウィジェット全体の背景
-//                        .cornerRadius(12)
-//                        .padding()
-                    }
-    }
-    
-    
-    
-    struct PokebellWidget: Widget {
-        let kind: String = "PokebellWidget"
-        
-        var body: some WidgetConfiguration {
-            StaticConfiguration(kind: kind, provider: Provider()) { entry in
-                if #available(iOS 17.0, *) {
-                    PokebellWidgetEntryView(entry: entry, newData: "9999")
-                        .containerBackground(.fill.tertiary, for: .widget)
-                } else {
-                    PokebellWidgetEntryView(entry: entry, newData: "66666")
-                        .padding()
-                        .background()
-                }
+            HStack {
+                Text(entry.message)
+                Text("-")
+                Text(entry.sender)
             }
-            .configurationDisplayName("My Widget")
-            .description("This is an example widget.")
+            .foregroundStyle(Color("gray"))
+            .font(.custom("Dott-Font", size: 20))
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 30, trailing: 0))
+        }
+        .containerBackground(for: .widget) {
+            Image("bell.bg")
+                .resizable()
+                .scaledToFill()
         }
     }
+}
+
+
+
+struct PokebellWidget: Widget {
+    let kind: String = "PokebellWidget"
     
-    #Preview(as: .systemMedium) {
-        PokebellWidget()
-    } timeline: {
-        SimpleEntry(date: .now, emoji: "😀")
-        SimpleEntry(date: .now, emoji: "🤩")
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            PokebellWidgetEntryView(entry: entry)
+        }
+        .configurationDisplayName("My Widget")
+        .description("This is an example widget.")
     }
+}
+
+#Preview(as: .systemMedium) {
+    PokebellWidget()
+} timeline: {
+    MessageEntry(sender: "1111", message: "222")
+}
 

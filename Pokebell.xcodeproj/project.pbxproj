@@ -28,6 +28,8 @@
 		D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15382D4A38D600A78453 /* FirestoreClient.swift */; };
 		D2AF153C2D4A403800A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF153B2D4A403800A78453 /* FirebaseFirestore */; };
 		D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */; };
+		D2AF15422D951A2900A78453 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */; };
+		D2AF15432D951A2900A78453 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,7 @@
 		D2AF15382D4A38D600A78453 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 		D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PokebellWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D2AF153E2D537E4D00A78453 /* Pokebell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pokebell.entitlements; sourceTree = "<group>"; };
+		D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +105,6 @@
 		D2AF14BF2D3FD7CC00A78453 = {
 			isa = PBXGroup;
 			children = (
-				D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */,
 				D2AF14CA2D3FD7CC00A78453 /* Pokebell */,
 				D2AF14E72D40FB7000A78453 /* PokebellWidget */,
 				D2AF14E22D40FB7000A78453 /* Frameworks */,
@@ -127,6 +129,7 @@
 				D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */,
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
+				D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */,
 				D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */,
 				D2AF15352D4A351C00A78453 /* Message.swift */,
 				D2AF15382D4A38D600A78453 /* FirestoreClient.swift */,
@@ -156,6 +159,7 @@
 		D2AF14E72D40FB7000A78453 /* PokebellWidget */ = {
 			isa = PBXGroup;
 			children = (
+				D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */,
 				D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */,
 				D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */,
 				D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */,
@@ -281,6 +285,7 @@
 				D2AF14CE2D3FD7CC00A78453 /* ContentView.swift in Sources */,
 				D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */,
 				D2AF15362D4A351C00A78453 /* Message.swift in Sources */,
+				D2AF15422D951A2900A78453 /* UserDefaultsKey.swift in Sources */,
 				D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */,
 				D2AF15392D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D2AF14DC2D3FDE9100A78453 /* PhoneView.swift in Sources */,
@@ -295,6 +300,7 @@
 				D2AF14E92D40FB7000A78453 /* PokebellWidgetBundle.swift in Sources */,
 				D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */,
+				D2AF15432D951A2900A78453 /* UserDefaultsKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = PokebellWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PokebellWidget/PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LAJ6J7GY39;
@@ -525,7 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = PokebellWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PokebellWidget/PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LAJ6J7GY39;
