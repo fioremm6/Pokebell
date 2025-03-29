@@ -21,40 +21,56 @@ struct PhoneView: View {
     
     var body: some View {
         ZStack {
-            Color.gray.opacity(0.8)
+            Color("pink3")
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
-                        .fill(Color.black.opacity(0.8))
+                        .fill(Color.gray)
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.green)
+                                .fill(Color("lightpink"))
                                 .overlay {
                                     VStack {
-                                        Text(phoneNumber.isEmpty ? "自分の電話番号が登録されていません。電話番号を入力し、最後に＃＃をつけてください。" : "送り先の電話番号とメッセージを入力し、最後に＃＃をつけてください")
+                                        Text(phoneNumber.isEmpty ? "set your phone number + 「##」" : "phone number & message + 「##」")
                                             .minimumScaleFactor(0.7)
+                                            .foregroundColor(Color("blackgray"))
+                                            .font(.custom("x8y12pxTheStrongGamer", size: 20))
+                                        Rectangle()
+                                            .frame(height: 1)
+                                            .foregroundStyle(Color("pink2"))
                                         VStack {
                                             HStack {
                                                 Image(systemName: "phone.fill")
-                                                    .resizable()
+                                                    .foregroundColor(Color("blackgray"))
+//                                                    .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 20)
+                                                    .padding(.top,5)
                                                 Text(":")
+                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                                 Text("\(phonenumInput)")
+                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                                 Spacer()
                                             }
+                                          
                                             HStack {
                                                 Image(systemName: "envelope.fill")
-                                                    .resizable()
+                                                    .foregroundColor(Color("blackgray"))
+//                                                    .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 20)
+                                                    .padding(.top,5)
                                                 Text(":")
+                                                    .foregroundColor(Color("blackgray"))
+                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                                 Text("\(textnumInput)")
+                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                                 Spacer()
                                             }
                                         }
                                         .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
+                                        .foregroundColor(Color("blackgray"))
                                         
                                     }
                                     .padding(8)
@@ -97,27 +113,29 @@ struct PhoneView: View {
                                     
                                 }) {
                                     Text(number)
-                                        .foregroundColor(.white)
+                                        .font(.custom("x8y12pxTheStrongGamer", size: 25))
+                                        .padding(.bottom,7)
+                                        .foregroundColor(Color("blackgray"))
                                         .frame(width: 60, height: 60)
-                                        .background(Color("gray"))
+                                        .background(Color("lightgray"))
                                         .cornerRadius(35)
-                                        .shadow(radius: 5)
+                                        .shadow(color: Color("pokepink"),radius: 5)
                                 }
                             }
                             Button(action: resetInput) {
                                 Image(systemName: "arrow.clockwise")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color("blackgray"))
                                     .frame(width: 60, height: 60)
-                                    .background(Color("gray"))
+                                    .background(Color("lightgray"))
                                     .cornerRadius(35)
-                                    .shadow(radius: 5)
+                                    .shadow(color: Color("pokepink"),radius: 5)
                                 //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
                             }
                             Button(action: resetInput) { //使わない
                                 Image(systemName: "arrow.clockwise")
                                     .foregroundColor(.white)
                                     .frame(width: 60, height: 60)
-                                    .background(Color("gray"))
+                                    .background(Color("lightgray"))
                                     .cornerRadius(35)
                                     .shadow(radius: 5)
                                 //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
@@ -125,16 +143,16 @@ struct PhoneView: View {
                             .opacity(0)
                             Button(action: deleteInput) {
                                 Image(systemName: "delete.left")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color("blackgray"))
                                     .frame(width: 60, height: 60)
-                                    .background(Color("gray"))
+                                    .background(Color("lightgray"))
                                     .cornerRadius(35)
-                                    .shadow(radius: 5)
+                                    .shadow(color:Color("pokepink"),radius: 5)
                                 //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
                             }
                             
                         }
-                        .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 20))
+                        .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
                         //                    HStack {
                         //
                         //                        Button(action: resetInput) {
@@ -202,7 +220,7 @@ struct PhoneView: View {
             //
             Task {
                 do {
-                    try await FirestoreClient.postMessage(text: String(textnumInput.dropLast(2)), receiver: phonenumInput,myNumber: phoneNumber)
+                    try await FirestoreClient.postMessage(text: String(textnumInput.dropLast(2)),receiver: phonenumInput,myNumber: phoneNumber)
                     phonenumInput = ""
                     textnumInput = ""
                     errorMessage = nil
