@@ -39,8 +39,9 @@ struct MessageView: View {
                     }
                 }
             }
-            .background(Color("pink3"))
+            .navigationBarTitleTextColor(.green)
             .navigationTitle(phoneNumber)
+            .background(Color("pink3"))
             .foregroundColor(Color("blackgray"))
             .font(.custom("x8y12pxTheStrongGamer", size: 15))
         }
@@ -49,6 +50,14 @@ struct MessageView: View {
     
     
     
+}
+extension View {
+    func navigationBarTitleTextColor(_ color: Color) -> some View {
+        let uiColor = UIColor(color)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 50)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 50)!]
+        return self
+    }
 }
 
 

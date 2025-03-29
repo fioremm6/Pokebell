@@ -21,7 +21,7 @@ struct PhoneView: View {
     
     var body: some View {
         ZStack {
-            Color("pink3")
+            Color("lightgray")
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 ZStack {
@@ -135,7 +135,7 @@ struct PhoneView: View {
                                 Image(systemName: "arrow.clockwise")
                                     .foregroundColor(.white)
                                     .frame(width: 60, height: 60)
-                                    .background(Color("lightgray"))
+                                    .background(Color("lightpink"))
                                     .cornerRadius(35)
                                     .shadow(radius: 5)
                                 //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
