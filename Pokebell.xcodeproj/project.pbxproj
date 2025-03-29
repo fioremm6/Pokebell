@@ -30,6 +30,8 @@
 		D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */; };
 		D2AF15422D951A2900A78453 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */; };
 		D2AF15432D951A2900A78453 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */; };
+		D2AF15452D95576400A78453 /* Dott-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15442D95576400A78453 /* Dott-Font.ttf */; };
+		D2AF15462D95576400A78453 /* Dott-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15442D95576400A78453 /* Dott-Font.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,7 @@
 		D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PokebellWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D2AF153E2D537E4D00A78453 /* Pokebell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pokebell.entitlements; sourceTree = "<group>"; };
 		D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		D2AF15442D95576400A78453 /* Dott-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dott-Font.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,7 @@
 			children = (
 				D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */,
 				D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */,
+				D2AF15442D95576400A78453 /* Dott-Font.ttf */,
 				D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */,
 				D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */,
 				D2AF14EC2D40FB7100A78453 /* Assets.xcassets */,
@@ -259,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AF15452D95576400A78453 /* Dott-Font.ttf in Resources */,
 				D2AF14D32D3FD7D100A78453 /* Preview Assets.xcassets in Resources */,
 				D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */,
 				D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
@@ -269,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AF15462D95576400A78453 /* Dott-Font.ttf in Resources */,
 				D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */,
 				D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */,
 				D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */,

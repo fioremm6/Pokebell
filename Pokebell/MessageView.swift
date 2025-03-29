@@ -17,12 +17,15 @@ struct MessageView: View {
             List {
                 ForEach(messageModel.messages, id: \.self) { message in
                     HStack {
+                        Image(systemName: "envelope.fill")
                         Text(message.text)
-                            .padding()
+                        Spacer()
+                        Image(systemName: "phone.fill")
                         Text(message.sender)
                     }
                 }
             }
+            .listStyle(.plain)
             .refreshable {
                 WidgetCenter.shared.reloadAllTimelines()
                 Task {
@@ -34,10 +37,11 @@ struct MessageView: View {
                     }
                 }
             }
-            .navigationTitle("メッセージ履歴")
             .background(Color("pokepink"))
+            .navigationTitle(phoneNumber)
         }
     }
+    
     
     
 }

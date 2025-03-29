@@ -63,7 +63,7 @@ struct PokebellWidgetEntryView : View {
                 Text(entry.sender)
             }
             .foregroundStyle(Color("gray"))
-            .font(.custom("Dott-Font", size: 20))
+            .font(.custom("x8y12pxTheStrongGamer", size: 20))
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 30, trailing: 0))
         }
         .containerBackground(for: .widget) {
