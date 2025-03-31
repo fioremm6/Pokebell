@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D26544902D9ACBB5005E4CA4 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = D265448F2D9ACBB5005E4CA4 /* GoogleService-Info (1).plist */; };
+		D26544912D9ACBB5005E4CA4 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = D265448F2D9ACBB5005E4CA4 /* GoogleService-Info (1).plist */; };
 		D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */; };
 		D2AF14CE2D3FD7CC00A78453 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */; };
 		D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */; };
@@ -19,8 +21,6 @@
 		D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */; };
 		D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14EC2D40FB7100A78453 /* Assets.xcassets */; };
 		D2AF14F12D40FB7100A78453 /* PokebellWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
-		D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */; };
 		D2AF14FB2D410CA000A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF14FA2D410CA000A78453 /* FirebaseFirestore */; };
 		D2AF15362D4A351C00A78453 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15352D4A351C00A78453 /* Message.swift */; };
 		D2AF15372D4A351C00A78453 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15352D4A351C00A78453 /* Message.swift */; };
@@ -61,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D265448F2D9ACBB5005E4CA4 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
 		D2AF14C82D3FD7CC00A78453 /* Pokebell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokebell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellApp.swift; sourceTree = "<group>"; };
 		D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellWidget.swift; sourceTree = "<group>"; };
 		D2AF14EC2D40FB7100A78453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AF14EE2D40FB7100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2AF15342D4A2FD100A78453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D2AF15352D4A351C00A78453 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D2AF15382D4A38D600A78453 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */,
-				D2AF14F62D410ABB00A78453 /* GoogleService-Info.plist */,
+				D265448F2D9ACBB5005E4CA4 /* GoogleService-Info (1).plist */,
 				D2AF15442D95576400A78453 /* Dott-Font.ttf */,
 				D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */,
 				D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */,
@@ -268,10 +268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AF15452D95576400A78453 /* Dott-Font.ttf in Resources */,
+				D26544902D9ACBB5005E4CA4 /* GoogleService-Info (1).plist in Resources */,
 				D2AF14D32D3FD7D100A78453 /* Preview Assets.xcassets in Resources */,
 				D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */,
 				D2AF15482D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */,
-				D2AF14F72D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,10 +280,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AF15462D95576400A78453 /* Dott-Font.ttf in Resources */,
+				D26544912D9ACBB5005E4CA4 /* GoogleService-Info (1).plist in Resources */,
 				D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */,
 				D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */,
 				D2AF15492D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */,
-				D2AF14F82D410ABB00A78453 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +456,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
-				DEVELOPMENT_TEAM = LAJ6J7GY39;
+				DEVELOPMENT_TEAM = QQZS279PYH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokebell/Info.plist;
@@ -470,7 +470,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebell;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Bellmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -488,7 +488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
-				DEVELOPMENT_TEAM = LAJ6J7GY39;
+				DEVELOPMENT_TEAM = QQZS279PYH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokebell/Info.plist;
@@ -502,7 +502,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebell;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Bellmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -518,7 +518,7 @@
 				CODE_SIGN_ENTITLEMENTS = PokebellWidget/PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LAJ6J7GY39;
+				DEVELOPMENT_TEAM = QQZS279PYH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokebellWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PokebellWidget;
@@ -529,7 +529,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebell.PokebellWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Bellmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -546,7 +546,7 @@
 				CODE_SIGN_ENTITLEMENTS = PokebellWidget/PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LAJ6J7GY39;
+				DEVELOPMENT_TEAM = QQZS279PYH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokebellWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PokebellWidget;
@@ -557,7 +557,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebell.PokebellWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Bellmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

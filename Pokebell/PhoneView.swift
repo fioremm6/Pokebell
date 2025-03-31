@@ -16,20 +16,20 @@ struct PhoneView: View {
     
     @State var isRegistered = false
     
-    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebell")) var phoneNumber = ""
+    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Bellmy")) var phoneNumber = ""
     
     
     var body: some View {
         ZStack {
-            Color("lightgray")
+            Color("pink3")
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
-                        .fill(Color.gray)
+                        .fill(Color("blackgray"))
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color("lightpink"))
+                                .fill(Color("pokegreen"))
                                 .overlay {
                                     VStack {
                                         Text(phoneNumber.isEmpty ? "set your phone number + 「##」" : "phone number & message + 「##」")
@@ -38,7 +38,7 @@ struct PhoneView: View {
                                             .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                         Rectangle()
                                             .frame(height: 1)
-                                            .foregroundStyle(Color("pink2"))
+                                            .foregroundStyle(Color("blackgray"))
                                         VStack {
                                             HStack {
                                                 Image(systemName: "phone.fill")

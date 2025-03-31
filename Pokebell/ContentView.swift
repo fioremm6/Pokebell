@@ -17,13 +17,13 @@ struct ContentView: View {
             TabView {
                 PhoneView()
                     .tabItem {
-                        Label("送信", systemImage: "square.and.pencil")
+                        Label("send", systemImage: "square.and.pencil")
                     }
                     .environmentObject(messageModel) // 共有データ
                 
                 MessageView()
                     .tabItem {
-                        Label("履歴", systemImage: "list.bullet")
+                        Label("message", systemImage: "list.bullet")
                     }
                     .environmentObject(messageModel) // 共有データ
             }

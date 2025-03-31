@@ -66,10 +66,10 @@ struct PokebellWidgetEntryView : View {
                 Color("pink3")
                     .edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("lightpink"))
+                    .fill(Color("blackgray"))
                         .overlay {
                             RoundedRectangle(cornerRadius: 15)
-                                .fill(Color("lightblue"))
+                                .fill(Color("pokegreen"))
                                 .overlay {
                                     VStack {
                                         HStack {

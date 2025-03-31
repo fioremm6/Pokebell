@@ -10,7 +10,7 @@ import WidgetKit
 
 struct MessageView: View {
     @EnvironmentObject var messageModel: MessageModel
-    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebell")) var phoneNumber = ""
+    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Bellmy")) var phoneNumber = ""
     
     var body: some View {
         NavigationView {
@@ -39,7 +39,7 @@ struct MessageView: View {
                     }
                 }
             }
-            .navigationBarTitleTextColor(.green)
+            .navigationBarTitleTextColor(Color("blackgray"))
             .navigationTitle(phoneNumber)
             .background(Color("pink3"))
             .foregroundColor(Color("blackgray"))
@@ -54,8 +54,8 @@ struct MessageView: View {
 extension View {
     func navigationBarTitleTextColor(_ color: Color) -> some View {
         let uiColor = UIColor(color)
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 50)!]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 50)!]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
         return self
     }
 }
