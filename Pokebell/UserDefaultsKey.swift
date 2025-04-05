@@ -11,7 +11,7 @@ enum UserDefaultsKey: String {
     case phoneNumber
     case date
     
-    private static let sharedUserDefaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Bellmy")!
+    private static let sharedUserDefaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")!
     
     static subscript<T>(key: Self, type: T.Type = T.self) -> T? {
         get {

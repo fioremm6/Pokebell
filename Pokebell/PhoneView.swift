@@ -13,10 +13,10 @@ struct PhoneView: View {
     @State private var textnumInput: String = ""
     @State private var errorMessage: String? = nil
     @FocusState private var isFocused: Bool
+    @State var isShowingAddressView = false
+    @State var isShowingHintView = false
     
-    @State var isRegistered = false
-    
-    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Bellmy")) var phoneNumber = ""
+    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
     
     var body: some View {
@@ -24,6 +24,30 @@ struct PhoneView: View {
             Color("pink3")
                 .edgesIgnoringSafeArea(.all)
             VStack {
+                HStack {
+                    Button {
+                        isShowingAddressView = true
+                    } label: {
+                        Image(systemName: "person.2.fill")
+                            .foregroundColor(Color("blackgray"))
+                    }
+                    .sheet(isPresented: $isShowingAddressView) {
+                        AddressView()
+                    }
+                    Spacer()
+                    Button {
+                        isShowingHintView = true
+                    } label: {
+                        Image(systemName: "lightbulb.min.fill")
+                            .foregroundColor(Color("blackgray"))
+                    }
+                    .sheet(isPresented: $isShowingHintView) {
+                       HintView()
+                    }
+                    
+                }
+                .padding(.horizontal, 20)
+                .padding(.top,20)
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
                         .fill(Color("blackgray"))
@@ -43,7 +67,7 @@ struct PhoneView: View {
                                             HStack {
                                                 Image(systemName: "phone.fill")
                                                     .foregroundColor(Color("blackgray"))
-//                                                    .resizable()
+                                                //                                                    .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 20)
                                                     .padding(.top,5)
@@ -53,11 +77,11 @@ struct PhoneView: View {
                                                     .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                                 Spacer()
                                             }
-                                          
+                                            
                                             HStack {
                                                 Image(systemName: "envelope.fill")
                                                     .foregroundColor(Color("blackgray"))
-//                                                    .resizable()
+                                                //                                                    .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 20)
                                                     .padding(.top,5)
@@ -78,34 +102,10 @@ struct PhoneView: View {
                                 .padding(14)
                         }
                         .padding(.horizontal, 20)
-                        .padding(.top, 40)
+                        .padding(.top, 20)
                 }
                 HStack {
                     VStack {
-                        VStack {
-                            //                        VStack {
-                            //                            Text(phoneNumber.isEmpty ? "自分の電話番号が登録されていません。電話番号を入力し、最後に＃＃をつけてください。" : "送り先の電話番号とメッセージを入力し、最後に＃＃をつけてください")
-                            //                            VStack {
-                            //                                HStack {
-                            //                                    Image(systemName: "phone.fill")
-                            //                                    Text(":")
-                            //                                    Text("\(phonenumInput)")
-                            //                                    Spacer()
-                            //                                }
-                            //                                HStack {
-                            //                                    Image(systemName: "envelope.fill")
-                            //                                    Text(":")
-                            //                                    Text("\(textnumInput)")
-                            //                                    Spacer()
-                            //                                }
-                            //                            }
-                            //                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
-                            //
-                            //                        }
-                        }
-                        .padding(EdgeInsets(top: 0, leading: 30, bottom: 30, trailing: 30))
-                        
-                        
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 20) {
                             ForEach(["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"], id: \.self) { number in
                                 Button(action: {
@@ -129,7 +129,7 @@ struct PhoneView: View {
                                     .background(Color("lightgray"))
                                     .cornerRadius(35)
                                     .shadow(color: Color("pokepink"),radius: 5)
-                                //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
+                                
                             }
                             Button(action: resetInput) { //使わない
                                 Image(systemName: "arrow.clockwise")
@@ -138,7 +138,7 @@ struct PhoneView: View {
                                     .background(Color("lightpink"))
                                     .cornerRadius(35)
                                     .shadow(radius: 5)
-                                //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
+                                
                             }
                             .opacity(0)
                             Button(action: deleteInput) {
@@ -148,32 +148,11 @@ struct PhoneView: View {
                                     .background(Color("lightgray"))
                                     .cornerRadius(35)
                                     .shadow(color:Color("pokepink"),radius: 5)
-                                //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
+                                
                             }
                             
                         }
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-                        //                    HStack {
-                        //
-                        //                        Button(action: resetInput) {
-                        //                            Text("リセット")
-                        //                                .foregroundColor(.white)
-                        //                                .frame(width: 60, height: 60)
-                        //                                .background(Color("gray"))
-                        //                                .cornerRadius(35)
-                        //                                .shadow(radius: 5)
-                        //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
-                        //                        }
-                        //                        Button(action: deleteInput) {
-                        //                            Image(systemName: "delete.left")
-                        //                                .frame(maxWidth: .infinity, minHeight: 30)
-                        //                                .background(Color("gray"))
-                        //                                .foregroundColor(.white)
-                        //                                .cornerRadius(15)
-                        //                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 20))
-                        //                        }
-                        //                    }
-                        //                    .padding(.bottom)
                         
                         
                         if let errorMessage = errorMessage {
@@ -181,6 +160,7 @@ struct PhoneView: View {
                                 .foregroundColor(.red)
                                 .padding(.bottom)
                         }
+                        
                     }
                     
                 }
@@ -189,6 +169,7 @@ struct PhoneView: View {
             }
             
         }
+    
     }
     
     
@@ -224,10 +205,12 @@ struct PhoneView: View {
                     phonenumInput = ""
                     textnumInput = ""
                     errorMessage = nil
+                   
                 } catch {
                     print(error.localizedDescription)
                 }
             }
+        
         }
         
         
@@ -250,6 +233,12 @@ struct PhoneView: View {
     private func sendMynumber() {
         textnumInput = ""
         errorMessage = nil
+    }
+    private func showHint() {
+        
+    }
+    private func showAddress() {
+        
     }
     
 }

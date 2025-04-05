@@ -57,6 +57,7 @@ struct MessageEntry: TimelineEntry {
 
 struct PokebellWidgetEntryView : View {
     var entry: Provider.Entry
+    @State private var offset: CGFloat = UIScreen.main.bounds.width
     
     var body: some View {
         VStack {
@@ -67,64 +68,58 @@ struct PokebellWidgetEntryView : View {
                     .edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color("blackgray"))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(Color("pokegreen"))
-                                .overlay {
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: "antenna.radiowaves.left.and.right")
-                                            Image(systemName: "bell.fill")
-                                            Spacer()
-                                            Image(systemName: "speaker.wave.3.fill")
-                                            Image(systemName: "music.note")
-                                           
-                                        }
-                                        .font(.system(size: 15))
-                                        .foregroundColor(Color("blackgray"))
-                                        .padding(.horizontal, 15)
-                                        HStack {
-                                            Text(entry.message)
-                                            Text("-")
-                                            Text(entry.sender)
-                                        }
-                                        .foregroundStyle(Color("blackgray"))
-                                        .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                                        .padding([.horizontal, .bottom], 4)
-//                                        Text(entry.message)
-//                                            .minimumScaleFactor(0.7)
-//                                            .foregroundColor(Color("gray"))
-//                                            .font(.custom("x8y12pxTheStrongGamer", size: 20))
-//                                        Rectangle()
-//                                            .frame(height: 1)
-//                                            .foregroundStyle(Color("pink2"))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color("pokegreen"))
+                            .overlay {
+                                VStack {
+                                    HStack {
+                                        Image(systemName: "antenna.radiowaves.left.and.right")
+                                        Image(systemName: "bell.fill")
+                                        Spacer()
+                                        Image(systemName: "speaker.wave.3.fill")
+                                        Image(systemName: "music.note")
+                                        
                                     }
+                                    .font(.system(size: 15))
+                                    .foregroundColor(Color("blackgray"))
+                                    .padding(.horizontal, 15)
+                                    HStack {
+                                        Text(entry.message)
+                                        Text("-")
+                                        Text(entry.sender)
+                                            
+                                    }
+                                    .foregroundStyle(Color("blackgray"))
+                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
+                                    .padding([.horizontal, .bottom], 4)
+                                   
                                 }
+                            }
                                 .padding([.horizontal, .top], 10)
                                 .padding(.bottom, 10)
-                        }
-                        .padding([.horizontal, .top], 10)
-                        .padding(.bottom, 60)
+                            }
+                            .padding([.horizontal, .top], 10)
+                            .padding(.bottom, 60)
                     }
-//            Image("bell.bg")
-//                .resizable()
-//                .scaledToFill()
+            }
         }
     }
-}
 
 
 
-struct PokebellWidget: Widget {
-    let kind: String = "PokebellWidget"
+
+    struct PokebellWidget: Widget {
+        let kind: String = "PokebellWidget"
+        
+        var body: some WidgetConfiguration {
+            StaticConfiguration(kind: kind, provider: Provider()) { entry in
+                PokebellWidgetEntryView(entry: entry)
+            }
+            .configurationDisplayName("My Widget")
+            .description("This is an example widget.")
+        }
     
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            PokebellWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
-    }
 }
 
 #Preview(as: .systemMedium) {

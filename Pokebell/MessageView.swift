@@ -10,21 +10,21 @@ import WidgetKit
 
 struct MessageView: View {
     @EnvironmentObject var messageModel: MessageModel
-    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Bellmy")) var phoneNumber = ""
+    @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(messageModel.messages, id: \.self) { message in
-                    HStack {
-                        Image(systemName: "envelope.fill")
-                        Text(message.text)
-                            .padding(.bottom,5)
-                        Spacer()
-                        Image(systemName: "phone.fill")
-                        Text(message.sender)
-                            .padding(.bottom,5)
-                    }
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                            Text(message.text)
+                                .padding(.bottom,5)
+                            Spacer()
+                            Image(systemName: "phone.fill")
+                            Text(message.sender)
+                                .padding(.bottom,5)
+                        }
                 }
             }
             .listStyle(.plain)
