@@ -11,6 +11,8 @@
 		D20E09812DA0BD7300FE2D28 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E097F2DA0BD7300FE2D28 /* AddressView.swift */; };
 		D20E09862DA0EED500FE2D28 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E09852DA0EED500FE2D28 /* HintView.swift */; };
 		D20E09872DA0EED500FE2D28 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E09852DA0EED500FE2D28 /* HintView.swift */; };
+		D20E09892DA12CEB00FE2D28 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E09882DA12CEB00FE2D28 /* CustomView.swift */; };
+		D20E098A2DA12CEB00FE2D28 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E09882DA12CEB00FE2D28 /* CustomView.swift */; };
 		D26544922D9AD24D005E4CA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */; };
 		D26544932D9AD40D005E4CA4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E52D40FB7000A78453 /* SwiftUI.framework */; };
 		D26544942D9AD411005E4CA4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E32D40FB7000A78453 /* WidgetKit.framework */; };
@@ -73,6 +75,7 @@
 /* Begin PBXFileReference section */
 		D20E097F2DA0BD7300FE2D28 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		D20E09852DA0EED500FE2D28 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
+		D20E09882DA12CEB00FE2D28 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2AF14C82D3FD7CC00A78453 /* Pokebell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokebell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellApp.swift; sourceTree = "<group>"; };
@@ -151,9 +154,10 @@
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
 				D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */,
+				D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */,
 				D20E097F2DA0BD7300FE2D28 /* AddressView.swift */,
 				D20E09852DA0EED500FE2D28 /* HintView.swift */,
-				D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */,
+				D20E09882DA12CEB00FE2D28 /* CustomView.swift */,
 				D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */,
 				D2AF15352D4A351C00A78453 /* Message.swift */,
 				D2AF15382D4A38D600A78453 /* FirestoreClient.swift */,
@@ -246,7 +250,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					D2AF14C72D3FD7CC00A78453 = {
 						CreatedOnToolsVersion = 15.4;
@@ -316,6 +320,7 @@
 				D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */,
 				D2AF15362D4A351C00A78453 /* Message.swift in Sources */,
 				D2AF15422D951A2900A78453 /* UserDefaultsKey.swift in Sources */,
+				D20E098A2DA12CEB00FE2D28 /* CustomView.swift in Sources */,
 				D20E09802DA0BD7300FE2D28 /* AddressView.swift in Sources */,
 				D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */,
 				D2AF15392D4A38D600A78453 /* FirestoreClient.swift in Sources */,
@@ -333,6 +338,7 @@
 				D26544922D9AD24D005E4CA4 /* ContentView.swift in Sources */,
 				D26544972D9B6D54005E4CA4 /* PhoneView.swift in Sources */,
 				D26544982D9B6D59005E4CA4 /* MessageView.swift in Sources */,
+				D20E09892DA12CEB00FE2D28 /* CustomView.swift in Sources */,
 				D20E09812DA0BD7300FE2D28 /* AddressView.swift in Sources */,
 				D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */,
@@ -386,6 +392,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = QQZS279PYH;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -449,6 +456,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = QQZS279PYH;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -473,14 +481,12 @@
 		D2AF14D72D3FD7D100A78453 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Pokebell/Pokebell.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
-				DEVELOPMENT_TEAM = QQZS279PYH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokebell/Info.plist;
@@ -510,14 +516,12 @@
 		D2AF14D82D3FD7D100A78453 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Pokebell/Pokebell.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
-				DEVELOPMENT_TEAM = QQZS279PYH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokebell/Info.plist;
@@ -552,7 +556,6 @@
 				CODE_SIGN_ENTITLEMENTS = PokebellWidget/PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QQZS279PYH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokebellWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bellmy;
@@ -580,7 +583,6 @@
 				CODE_SIGN_ENTITLEMENTS = PokebellWidget/PokebellWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QQZS279PYH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokebellWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bellmy;

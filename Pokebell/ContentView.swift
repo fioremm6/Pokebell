@@ -20,6 +20,11 @@ struct ContentView: View {
                         Label("send", systemImage: "square.and.pencil")
                     }
                     .environmentObject(messageModel) // 共有データ
+                CustomView()
+                    .tabItem {
+                        Label("custom", systemImage: "plus.circle.fill")
+                    }
+                    .environmentObject(messageModel) // 共有データ
                 
                 MessageView()
                     .tabItem {

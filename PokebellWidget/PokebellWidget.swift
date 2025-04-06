@@ -7,7 +7,6 @@
 
 import WidgetKit
 import SwiftUI
-
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> MessageEntry {
         .placeholder
@@ -54,6 +53,7 @@ struct MessageEntry: TimelineEntry {
     static let placeholder = Self(sender: "", message: "")
     
 }
+let appGroupUserDefaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")!
 
 struct PokebellWidgetEntryView : View {
     var entry: Provider.Entry
@@ -64,8 +64,13 @@ struct PokebellWidgetEntryView : View {
         }
         .containerBackground(for: .widget) {
             ZStack {
-                Color("pink3")
-                    .edgesIgnoringSafeArea(.all)
+//                Color("pink3")
+//                    .edgesIgnoringSafeArea(.all)
+                let selectedColor = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
+                                
+                                // 選ばれた色に応じて背景色を変更
+                                Color(selectedColor)
+                                    .edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color("blackgray"))
                     .overlay {
@@ -127,4 +132,3 @@ struct PokebellWidgetEntryView : View {
 } timeline: {
     MessageEntry(sender: "1111", message: "222")
 }
-
