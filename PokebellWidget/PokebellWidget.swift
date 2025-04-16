@@ -64,13 +64,13 @@ struct PokebellWidgetEntryView : View {
         }
         .containerBackground(for: .widget) {
             ZStack {
-//                Color("pink3")
-//                    .edgesIgnoringSafeArea(.all)
+                Color("pink3")
+                    .edgesIgnoringSafeArea(.all)
                 let selectedColor = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
-                                
-                                // 選ばれた色に応じて背景色を変更
                                 Color(selectedColor)
                                     .edgesIgnoringSafeArea(.all)
+//                Image("hyougara.brown")
+//                    .resizable()
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color("blackgray"))
                     .overlay {

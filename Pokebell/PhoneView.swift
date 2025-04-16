@@ -18,36 +18,35 @@ struct PhoneView: View {
     
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
+    var textSection: some View {
+        HStack {
+            Button {
+                isShowingHintView = true
+            } label: {
+                Image(systemName: "envelope.fill")
+                    .foregroundColor(Color("blackgray"))
+                    .scaledToFit()
+                    .frame(width: 20)
+                    .padding(.top,5)
+            }
+            .sheet(isPresented: $isShowingHintView) {
+               HintView()
+            }
+            Text(":")
+                .foregroundColor(Color("blackgray"))
+                .font(.custom("x8y12pxTheStrongGamer", size: 20))
+            Text("\(textnumInput)")
+                .font(.custom("x8y12pxTheStrongGamer", size: 20))
+            Spacer()
+        }
+    }
     
     var body: some View {
         ZStack {
             Color("pink3")
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                HStack {
-                    Button {
-                        isShowingAddressView = true
-                    } label: {
-                        Image(systemName: "person.2.fill")
-                            .foregroundColor(Color("blackgray"))
-                    }
-                    .sheet(isPresented: $isShowingAddressView) {
-                        AddressView()
-                    }
-                    Spacer()
-                    Button {
-                        isShowingHintView = true
-                    } label: {
-                        Image(systemName: "lightbulb.min.fill")
-                            .foregroundColor(Color("blackgray"))
-                    }
-                    .sheet(isPresented: $isShowingHintView) {
-                       HintView()
-                    }
-                    
-                }
-                .padding(.horizontal, 20)
-                .padding(.top,20)
+               
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
                         .fill(Color("blackgray"))
@@ -65,12 +64,20 @@ struct PhoneView: View {
                                             .foregroundStyle(Color("blackgray"))
                                         VStack {
                                             HStack {
-                                                Image(systemName: "phone.fill")
-                                                    .foregroundColor(Color("blackgray"))
-                                                //                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 20)
-                                                    .padding(.top,5)
+                                                Button {
+                                                    isShowingAddressView = true
+                                                } label: {
+                                                    Image(systemName: "phone.fill")
+                                                        .foregroundColor(Color("blackgray"))
+                                                    //                                                    .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 20)
+                                                        .padding(.top,5)
+                                                }
+                                                .sheet(isPresented: $isShowingAddressView) {
+                                                    AddressView()
+                                                }
+                                                
                                                 Text(":")
                                                     .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                                 Text("\(phonenumInput)")
@@ -78,20 +85,7 @@ struct PhoneView: View {
                                                 Spacer()
                                             }
                                             
-                                            HStack {
-                                                Image(systemName: "envelope.fill")
-                                                    .foregroundColor(Color("blackgray"))
-                                                //                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 20)
-                                                    .padding(.top,5)
-                                                Text(":")
-                                                    .foregroundColor(Color("blackgray"))
-                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                                                Text("\(textnumInput)")
-                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                                                Spacer()
-                                            }
+                                            textSection
                                         }
                                         .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
                                         .foregroundColor(Color("blackgray"))

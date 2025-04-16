@@ -8,15 +8,8 @@
 import SwiftUI
 import WidgetKit
 
-//struct CustomView: View {
-//    
-//    
-//    var body: some View {
-//        VStack {
-//            Text("カスタム")
-//        }}
-//}
-//import SwiftUI
+
+
 struct CustomView: View {
     // ユーザーが選択した色を保持
     @State private var selectedColor: String = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
@@ -31,27 +24,27 @@ struct CustomView: View {
             // 赤、黄色、青の3色をボタンで選ばせる
             HStack {
                 Button(action: {
-                    selectedColor = "widgetred"
-                    appGroupUserDefaults.set("widgetred", forKey: "WidgetColor")
+                    selectedColor = "pink3"
+                    appGroupUserDefaults.set("pink3", forKey: "WidgetColor")
                     refreshWidget()
                     
                 }) {
-                    Text("Red")
+                    Text("Original")
                         .padding()
-                        .background(Color.red)
+                        .background(Color("pink3"))
                         .cornerRadius(8)
                         .foregroundColor(.white)
                 }
 
                 Button(action: {
-                    selectedColor = "widgetyellow"
-                    appGroupUserDefaults.set("widgetyellow", forKey: "WidgetColor")
+                    selectedColor = "lightgray"
+                    appGroupUserDefaults.set("lightgray", forKey: "WidgetColor")
                     refreshWidget()
                    
                 }) {
-                    Text("Yellow")
+                    Text("Gray")
                         .padding()
-                        .background(Color.yellow)
+                        .background(Color("lightgray"))
                         .cornerRadius(8)
                         .foregroundColor(.black)
                 }
@@ -64,7 +57,7 @@ struct CustomView: View {
                 }) {
                     Text("Blue")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color("widgetblue"))
                         .cornerRadius(8)
                         .foregroundColor(.white)
                 }
