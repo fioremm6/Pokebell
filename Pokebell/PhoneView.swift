@@ -18,6 +18,30 @@ struct PhoneView: View {
     
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
+    var phoneSection: some View {
+        HStack {
+            Button {
+                isShowingAddressView = true
+            } label: {
+                Image(systemName: "phone.fill")
+                    .foregroundColor(Color("blackgray"))
+                //                                                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                    .padding(.top,5)
+            }
+            .sheet(isPresented: $isShowingAddressView) {
+                AddressView(phoneNumInput: $phonenumInput)
+            }
+            
+            Text(":")
+                .font(.custom("x8y12pxTheStrongGamer", size: 20))
+            Text("\(phonenumInput)")
+                .font(.custom("x8y12pxTheStrongGamer", size: 20))
+            Spacer()
+        }
+    }
+    
     var textSection: some View {
         HStack {
             Button {
@@ -63,28 +87,7 @@ struct PhoneView: View {
                                             .frame(height: 1)
                                             .foregroundStyle(Color("blackgray"))
                                         VStack {
-                                            HStack {
-                                                Button {
-                                                    isShowingAddressView = true
-                                                } label: {
-                                                    Image(systemName: "phone.fill")
-                                                        .foregroundColor(Color("blackgray"))
-                                                    //                                                    .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 20)
-                                                        .padding(.top,5)
-                                                }
-                                                .sheet(isPresented: $isShowingAddressView) {
-                                                    AddressView()
-                                                }
-                                                
-                                                Text(":")
-                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                                                Text("\(phonenumInput)")
-                                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                                                Spacer()
-                                            }
-                                            
+                                           phoneSection
                                             textSection
                                         }
                                         .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
@@ -96,7 +99,7 @@ struct PhoneView: View {
                                 .padding(14)
                         }
                         .padding(.horizontal, 20)
-                        .padding(.top, 20)
+                        .padding(.top, 70)
                 }
                 HStack {
                     VStack {

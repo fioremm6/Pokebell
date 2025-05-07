@@ -46,6 +46,9 @@
 		D2AF15462D95576400A78453 /* Dott-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15442D95576400A78453 /* Dott-Font.ttf */; };
 		D2AF15482D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */; };
 		D2AF15492D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */; };
+		D2BA30A12DCB6DF10079B380 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D2BA30A02DCB6DF10079B380 /* GoogleMobileAds */; };
+		D2BA30A62DCB70110079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
+		D2BA30A72DCB70110079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +102,7 @@
 		D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		D2AF15442D95576400A78453 /* Dott-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dott-Font.ttf"; sourceTree = "<group>"; };
 		D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = x12y12pxMaruMinya.ttf; sourceTree = "<group>"; };
+		D2BA30A52DCB70110079B380 /* Admob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BA30A12DCB6DF10079B380 /* GoogleMobileAds in Frameworks */,
 				D26544932D9AD40D005E4CA4 /* SwiftUI.framework in Frameworks */,
 				D2AF14FB2D410CA000A78453 /* FirebaseFirestore in Frameworks */,
 				D26544942D9AD411005E4CA4 /* WidgetKit.framework in Frameworks */,
@@ -158,6 +163,7 @@
 				D20E097F2DA0BD7300FE2D28 /* AddressView.swift */,
 				D20E09852DA0EED500FE2D28 /* HintView.swift */,
 				D20E09882DA12CEB00FE2D28 /* CustomView.swift */,
+				D2BA30A52DCB70110079B380 /* Admob.swift */,
 				D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */,
 				D2AF15352D4A351C00A78453 /* Message.swift */,
 				D2AF15382D4A38D600A78453 /* FirestoreClient.swift */,
@@ -217,6 +223,7 @@
 			name = Pokebell;
 			packageProductDependencies = (
 				D2AF14FA2D410CA000A78453 /* FirebaseFirestore */,
+				D2BA30A02DCB6DF10079B380 /* GoogleMobileAds */,
 			);
 			productName = Pokebell;
 			productReference = D2AF14C82D3FD7CC00A78453 /* Pokebell.app */;
@@ -271,6 +278,7 @@
 			mainGroup = D2AF14BF2D3FD7CC00A78453;
 			packageReferences = (
 				D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D2BA309F2DCB6DF10079B380 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = D2AF14C92D3FD7CC00A78453 /* Products */;
 			projectDirPath = "";
@@ -315,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AF14CE2D3FD7CC00A78453 /* ContentView.swift in Sources */,
+				D2BA30A72DCB70110079B380 /* Admob.swift in Sources */,
 				D20E09872DA0EED500FE2D28 /* HintView.swift in Sources */,
 				D26544952D9AD5F1005E4CA4 /* PokebellWidget.swift in Sources */,
 				D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */,
@@ -333,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AF15372D4A351C00A78453 /* Message.swift in Sources */,
+				D2BA30A62DCB70110079B380 /* Admob.swift in Sources */,
 				D20E09862DA0EED500FE2D28 /* HintView.swift in Sources */,
 				D2AF14E92D40FB7000A78453 /* PokebellWidgetBundle.swift in Sources */,
 				D26544922D9AD24D005E4CA4 /* ContentView.swift in Sources */,
@@ -488,6 +498,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				GADApplicationIdentifier = "ca-app-pub-3940256099942544~1458002511";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokebell/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bellmy;
@@ -496,6 +507,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,6 +535,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokebell/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				GADApplicationIdentifier = "ca-app-pub-3494245922462849~5144376811";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokebell/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bellmy;
@@ -531,6 +544,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -643,6 +657,14 @@
 				minimumVersion = 11.7.0;
 			};
 		};
+		D2BA309F2DCB6DF10079B380 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -655,6 +677,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		D2BA30A02DCB6DF10079B380 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2BA309F2DCB6DF10079B380 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

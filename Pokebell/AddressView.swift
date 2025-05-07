@@ -9,6 +9,9 @@ import SwiftUI
 
 
 struct AddressView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var messageModel: MessageModel
     @AppStorage("phoneNumber", store: UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     @AppStorage("name", store: UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var name = ""
@@ -19,6 +22,8 @@ struct AddressView: View {
     
     // UserDefaultsから電話番号と名前を配列で読み込む
     @AppStorage("friends", store: UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) private var friendsData: Data = Data()
+    
+    @Binding var phoneNumInput: String
     
     var body: some View {
         NavigationView {
@@ -76,6 +81,10 @@ struct AddressView: View {
                             Text(friend.phoneNumber)
                                 .padding(.bottom, 5)
                         }
+                        .onTapGesture {
+                            phoneNumInput = friend.phoneNumber
+                            dismiss()
+                        }
                         .padding(5)
                         .swipeActions {
                                                     // 削除アクション
@@ -91,8 +100,13 @@ struct AddressView: View {
                     
                     /*.onDelete(perform: deleteFriend)*/ // スワイプで削除
                 }
-                
+                List {
+                    BannerContentView()
+                        .frame(height:70)
+                        .listRowInsets(.init())
+                }
             }
+            
             .listStyle(.plain)
             .background(Color("pink3"))
             .foregroundColor(Color("blackgray"))
