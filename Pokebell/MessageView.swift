@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import SwiftData
 
 //struct MessageView: View {
 //    @EnvironmentObject var messageModel: MessageModel
@@ -98,6 +99,9 @@ import WidgetKit
 //}
 
 struct MessageView: View {
+    
+    @Query private var users : [PokebellUser]
+    
     @EnvironmentObject var messageModel: MessageModel
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     

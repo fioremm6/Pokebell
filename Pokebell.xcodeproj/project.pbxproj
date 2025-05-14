@@ -47,8 +47,10 @@
 		D2AF15482D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */; };
 		D2AF15492D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */; };
 		D2BA30A12DCB6DF10079B380 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D2BA30A02DCB6DF10079B380 /* GoogleMobileAds */; };
-		D2BA30A62DCB70110079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
 		D2BA30A72DCB70110079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
+		D2BA30A82DD49CE60079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
+		D2BA30AA2DD49F650079B380 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A92DD49F650079B380 /* TestView.swift */; };
+		D2BA30AB2DD49F650079B380 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A92DD49F650079B380 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,7 @@
 		D2AF15442D95576400A78453 /* Dott-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dott-Font.ttf"; sourceTree = "<group>"; };
 		D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = x12y12pxMaruMinya.ttf; sourceTree = "<group>"; };
 		D2BA30A52DCB70110079B380 /* Admob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admob.swift; sourceTree = "<group>"; };
+		D2BA30A92DD49F650079B380 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,7 @@
 				D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */,
 				D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */,
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
+				D2BA30A92DD49F650079B380 /* TestView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
 				D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */,
 				D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */,
@@ -333,6 +337,7 @@
 				D20E09802DA0BD7300FE2D28 /* AddressView.swift in Sources */,
 				D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */,
 				D2AF15392D4A38D600A78453 /* FirestoreClient.swift in Sources */,
+				D2BA30AA2DD49F650079B380 /* TestView.swift in Sources */,
 				D2AF14DC2D3FDE9100A78453 /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,8 +346,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BA30A82DD49CE60079B380 /* Admob.swift in Sources */,
 				D2AF15372D4A351C00A78453 /* Message.swift in Sources */,
-				D2BA30A62DCB70110079B380 /* Admob.swift in Sources */,
 				D20E09862DA0EED500FE2D28 /* HintView.swift in Sources */,
 				D2AF14E92D40FB7000A78453 /* PokebellWidgetBundle.swift in Sources */,
 				D26544922D9AD24D005E4CA4 /* ContentView.swift in Sources */,
@@ -352,6 +357,7 @@
 				D20E09812DA0BD7300FE2D28 /* AddressView.swift in Sources */,
 				D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */,
+				D2BA30AB2DD49F650079B380 /* TestView.swift in Sources */,
 				D2AF15432D951A2900A78453 /* UserDefaultsKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

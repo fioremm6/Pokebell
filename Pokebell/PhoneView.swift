@@ -15,6 +15,7 @@ struct PhoneView: View {
     @FocusState private var isFocused: Bool
     @State var isShowingAddressView = false
     @State var isShowingHintView = false
+    @Environment(\.modelContext) private var context
     
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
@@ -199,6 +200,8 @@ struct PhoneView: View {
             Task {
                 do {
                     try await FirestoreClient.postMessage(text: String(textnumInput.dropLast(2)),receiver: phonenumInput,myNumber: phoneNumber)
+                    let data = PokebellUser(phoneNumber: phonenumInput, textNum: String(textnumInput.dropLast(2)))
+                    context.insert(data)
                     phonenumInput = ""
                     textnumInput = ""
                     errorMessage = nil
