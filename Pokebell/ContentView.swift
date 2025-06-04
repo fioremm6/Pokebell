@@ -31,6 +31,11 @@ struct ContentView: View {
                         Label("message", systemImage: "list.bullet")
                     }
                     .environmentObject(messageModel) // 共有データ
+                TestView()
+                    .tabItem {
+                        Label("message", systemImage: "list.bullet")
+                    }
+                    .environmentObject(messageModel)
             }
             .accentColor(Color("blackgray"))
         }

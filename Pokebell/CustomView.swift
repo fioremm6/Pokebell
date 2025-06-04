@@ -13,8 +13,8 @@ import WidgetKit
 struct CustomView: View {
     // ユーザーが選択した色を保持
     @State private var selectedColor: String = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
-
-
+    
+    
     var body: some View {
         VStack {
             Text("Widget Custom")
@@ -66,67 +66,43 @@ struct CustomView: View {
                 
                 
             }
-            HStack {
-                Button(action: {
-                    selectedColor = "pink3"
-                    appGroupUserDefaults.set("pink3", forKey: "WidgetColor")
-                    refreshWidget()
-                    
-                }) {
-                    Color("pink3")
-                        .frame(width: 40,height: 40)
-                        .cornerRadius(20)
-                        .overlay{
-                                        Circle()                                // 円形部品
-                                            .stroke(Color.black, lineWidth: 1)  // 白い輪郭
-                                            .shadow(radius:1)                   // 影を付ける
-                                    }
-
-                }
-                Button(action: {
-                    selectedColor = "lightgray"
-                    appGroupUserDefaults.set("lightgray", forKey: "WidgetColor")
-                    refreshWidget()
-                    
-                }) {
-                    
-                    Color("lightgray")
-                        .frame(width: 40,height: 40)
-                        .cornerRadius(20)
-                        .overlay{
-                            Circle()                                // 円形部品
-                                .stroke(Color.black, lineWidth: 1)  // 白い輪郭
-                                .shadow(radius:1)                   // 影を付ける
-                        }
-                       
-                }
-                .padding(.horizontal,5)
+            HStack(spacing: 16) {
+                ForEach(["pink3", "lightgray", "widgetblue"], id: \.self) { colorName in
                     Button(action: {
-                        selectedColor = "widgetblue"
-                        appGroupUserDefaults.set("widgetblue", forKey: "WidgetColor")
-                        refreshWidget()
-                        
+                        withAnimation {
+                            selectedColor = colorName
+                            appGroupUserDefaults.set(colorName, forKey: "WidgetColor")
+                            refreshWidget()
+                        }
                     }) {
-                        Color("widgetblue")
-                            .frame(width: 40,height: 40)
-                            .cornerRadius(20)
-                            .overlay{
-                                            Circle()                                // 円形部品
-                                                .stroke(Color.black, lineWidth: 1)  // 白い輪郭
-                                                .shadow(radius:1)                   // 影を付ける
-                                        }
+                        ZStack {
+                            Color(colorName)
+                                .frame(width: 40, height: 40)
+                                .cornerRadius(20)
+                                
                             
-
+                            // 選択されているときに二重の青いリングを表示
+                            if selectedColor == colorName {
+                                Circle()
+                                    .stroke(Color.blue, lineWidth: 2)
+                                    .frame(width: 48, height: 48)
+                                
+                                Circle()
+                                    .stroke(Color.blue.opacity(0.6), lineWidth: 2)
+                                    .frame(width: 54, height: 54)
+                            }
+                        }
                     }
-                    
                 }
-                .padding(.bottom,330)
             }
-        .foregroundColor(Color("blackgray"))
+            .padding(.bottom, 330)
+            
         }
-    
-    private func refreshWidget() {
+    }
+        
+        private func refreshWidget() {
             WidgetCenter.shared.reloadAllTimelines()
         }
-}
+    }
+
 

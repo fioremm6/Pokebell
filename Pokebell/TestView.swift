@@ -37,13 +37,22 @@ struct TestView: View {
                         Image(systemName: "phone.fill")
                         Text(user.phoneNumber)
                     }
+                    .listRowBackground(Color("pink3"))
+//                    .font(.custom("x8y12pxTheStrongGamer", size: 15))
                 }
+                
                 .onDelete(perform: { indexSet in
                     for index in indexSet {
                         delete(todo: users[index])
                     }
                 })
+                .foregroundColor(Color("blackgray"))
+                .font(.custom("x8y12pxTheStrongGamer", size: 15))
+
             }
+           
+            
+            
         }
     }
 
