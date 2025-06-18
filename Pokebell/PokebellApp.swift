@@ -27,7 +27,7 @@ struct PokebellApp: App {
 //await MobileAds.shared.start()
                 }
         }
-        .modelContainer(for: PokebellUser.self)
+//        .modelContainer(for: PokebellUser.self)
     }
 }
 

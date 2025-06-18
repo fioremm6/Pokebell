@@ -19,10 +19,58 @@ struct CustomView: View {
         VStack {
             Text("Widget Custom")
                 .font(.custom("x8y12pxTheStrongGamer", size: 30))
+                .foregroundColor(Color("blackgray"))
                 .padding(.top,100)
+//            ZStack {
+//                RoundedRectangle(cornerRadius: 25)
+//                    .fill(Color(selectedColor))
+//                    .overlay {
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .fill(Color("blackgray"))
+//                            .overlay {
+//                                RoundedRectangle(cornerRadius: 15)
+//                                    .fill(Color("pokegreen"))
+//                                    .overlay {
+//                                        VStack {
+//                                            HStack {
+//                                                Image(systemName: "antenna.radiowaves.left.and.right")
+//                                                Image(systemName: "bell.fill")
+//                                                Spacer()
+//                                                Image(systemName: "speaker.wave.3.fill")
+//                                                Image(systemName: "music.note")
+//                                                
+//                                            }
+//                                            .font(.system(size: 15))
+//                                            .foregroundColor(Color("blackgray"))
+//                                            .padding(.horizontal, 15)
+//                                            HStack {
+//                                                //                                    Text(entry.message)
+//                                                Text("sample")
+//                                                //                                    Text(entry.sender)
+//                                                
+//                                            }
+//                                            .foregroundStyle(Color("blackgray"))
+//                                            .font(.custom("x8y12pxTheStrongGamer", size: 20))
+//                                            .padding([.horizontal, .bottom], 4)
+//                                            
+//                                        }
+//                                    }
+//                                    .padding(10)
+//                            }
+//                            .padding(.horizontal, 10)
+//                            .padding(.top,10)
+//                            .padding(.bottom, 60)
+//                    }
+//                    .padding(.horizontal, 30)
+//                    .padding(.top, 30)
+//                    .padding(.bottom,20)
+//                
+//                
+//            }
             ZStack {
                 RoundedRectangle(cornerRadius: 25)
                     .fill(Color(selectedColor))
+                    .shadow(color: .gray.opacity(0.4), radius: 10, x: 0, y: 5)
                     .overlay {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color("blackgray"))
@@ -60,12 +108,16 @@ struct CustomView: View {
                             .padding(.top,10)
                             .padding(.bottom, 60)
                     }
-                    .padding(.horizontal, 30)
                     .padding(.top, 30)
-                    .padding(.bottom,20)
+                    
                 
                 
             }
+            .frame(width: UIScreen.main.bounds.width * 0.85)
+            .aspectRatio(20/13, contentMode: .fit)
+            
+            
+            Spacer()
             HStack(spacing: 16) {
                 ForEach(["pink3", "lightgray", "widgetblue"], id: \.self) { colorName in
                     Button(action: {

@@ -7,20 +7,28 @@
 
 import SwiftUI
 import WidgetKit
-import SwiftData
+
+import FirebaseFirestore
 
 
 struct MessageView: View {
     
-    @Query private var users : [PokebellUser]
+    @FirestoreQuery(collectionPath: "messages") var messages: [Message]
     
-    @EnvironmentObject var messageModel: MessageModel
+    
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
+    var filteredMessages: [Message] {
+        messages
+            .filter { $0.receiver == phoneNumber }
+            .sorted { m0, m1 in
+                m0.date.dateValue() > m1.date.dateValue()
+            }
+    }
     var body: some View {
         NavigationView {
             List {
-                ForEach(messageModel.messages, id: \.self) { message in
+                ForEach(filteredMessages, id: \.self) { message in
                     HStack {
                         Image(systemName: "envelope.fill")
                         Text(message.text)
@@ -42,32 +50,27 @@ struct MessageView: View {
                 }
                 .onDelete(perform: deleteMessages) // スワイプで削除できるようにする
             }
-            .listStyle(.plain)
-            .refreshable {
-                // リフレッシュ時にFirestoreから最新のメッセージを取得
+//            .listStyle(.plain)
+            .onChange(of: filteredMessages){
+               
                 WidgetCenter.shared.reloadAllTimelines()
-                Task {
-                    do {
-                        // Firestoreからメッセージを再取得
-                        let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
-                        messageModel.messages = messages
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
             }
             .navigationBarTitleTextColor(Color("blackgray"))
             .navigationTitle(phoneNumber)
             .background(Color("pink3"))
             .foregroundColor(Color("blackgray"))
             .font(.custom("x8y12pxTheStrongGamer", size: 15))
+            .onDisappear {
+                print("testt")
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
     }
     
     // メッセージを削除するメソッド
-    private func deleteMessage(_ message: Message) {
+    private func deleteMessage(_ filteredMessages: Message) {
         // メッセージのIDがnilでないか確認
-        guard let messageId = message.id else {
+        guard let messageId = filteredMessages.id else {
             print("Message ID is nil, cannot delete message.")
             return
         }
@@ -79,9 +82,9 @@ struct MessageView: View {
                 try await FirestoreClient.deleteMessage(id: messageId)
                 
                 // ローカルのメッセージリストから削除
-                if let index = messageModel.messages.firstIndex(where: { $0.id == messageId }) {
-                    messageModel.messages.remove(at: index)
-                }
+//                if let index = messages.firstIndex(where: { $0.id == messageId }) {
+//                    messageModel.messages.remove(at: index)
+//                }
             } catch {
                 print("Error deleting message: \(error.localizedDescription)")
             }
@@ -90,7 +93,7 @@ struct MessageView: View {
     // スワイプ削除用のメソッド
     private func deleteMessages(at offsets: IndexSet) {
         // 削除対象のメッセージを取得
-        let messagesToDelete = offsets.map { messageModel.messages[$0] }
+        let messagesToDelete = offsets.map { filteredMessages[$0] }
         
         // Firestoreからも削除
         Task {
@@ -99,7 +102,7 @@ struct MessageView: View {
                 try await FirestoreClient.deleteMessages(ids: messagesToDelete.map { $0.id! })
                 
                 // ローカルのメッセージリストから削除
-                messageModel.messages.remove(atOffsets: offsets)
+//                messageModel.messages.remove(atOffsets: offsets)
             } catch {
                 print("Error deleting messages: \(error.localizedDescription)")
             }

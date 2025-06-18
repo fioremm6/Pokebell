@@ -33,6 +33,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
                 print("FCM registration token: \(token)")
             }
         }
+        
+        NotificationManager.shared.register()
 
         return true
     }

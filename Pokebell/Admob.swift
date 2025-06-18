@@ -85,9 +85,3 @@ import SwiftUI
 //        }
 //    }
 //}
-
-struct BannerContentView: View {
-    var body: some View {
-        Text("tst")
-    }
-}

@@ -100,11 +100,7 @@ struct AddressView: View {
                     
                     /*.onDelete(perform: deleteFriend)*/ // スワイプで削除
                 }
-                List {
-                    BannerContentView()
-                        .frame(height:70)
-                        .listRowInsets(.init())
-                }
+               
             }
             
             .listStyle(.plain)

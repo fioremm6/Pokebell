@@ -17,6 +17,8 @@
 		D22D8F712DF05AF700B3E6FD /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D8F6F2DF05AF700B3E6FD /* Notification.swift */; };
 		D22D8F732DF05B2200B3E6FD /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D22D8F722DF05B2200B3E6FD /* FirebaseMessaging */; };
 		D22D8F752DF05BE200B3E6FD /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D22D8F742DF05BE200B3E6FD /* FirebaseMessaging */; };
+		D249A0F22DF9835400462CF5 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249A0F12DF9835400462CF5 /* NoticeView.swift */; };
+		D249A0F32DF9835400462CF5 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249A0F12DF9835400462CF5 /* NoticeView.swift */; };
 		D26544922D9AD24D005E4CA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */; };
 		D26544932D9AD40D005E4CA4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E52D40FB7000A78453 /* SwiftUI.framework */; };
 		D26544942D9AD411005E4CA4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E32D40FB7000A78453 /* WidgetKit.framework */; };
@@ -53,8 +55,6 @@
 		D2BA30A12DCB6DF10079B380 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D2BA30A02DCB6DF10079B380 /* GoogleMobileAds */; };
 		D2BA30A72DCB70110079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
 		D2BA30A82DD49CE60079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
-		D2BA30AA2DD49F650079B380 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A92DD49F650079B380 /* TestView.swift */; };
-		D2BA30AB2DD49F650079B380 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A92DD49F650079B380 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +86,7 @@
 		D20E09852DA0EED500FE2D28 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		D20E09882DA12CEB00FE2D28 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		D22D8F6F2DF05AF700B3E6FD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		D249A0F12DF9835400462CF5 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2AF14C82D3FD7CC00A78453 /* Pokebell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokebell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellApp.swift; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		D2AF15442D95576400A78453 /* Dott-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dott-Font.ttf"; sourceTree = "<group>"; };
 		D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = x12y12pxMaruMinya.ttf; sourceTree = "<group>"; };
 		D2BA30A52DCB70110079B380 /* Admob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admob.swift; sourceTree = "<group>"; };
-		D2BA30A92DD49F650079B380 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,8 +167,8 @@
 				D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */,
 				D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */,
 				D22D8F6F2DF05AF700B3E6FD /* Notification.swift */,
+				D249A0F12DF9835400462CF5 /* NoticeView.swift */,
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
-				D2BA30A92DD49F650079B380 /* TestView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
 				D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */,
 				D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */,
@@ -339,6 +339,7 @@
 				D2AF14CE2D3FD7CC00A78453 /* ContentView.swift in Sources */,
 				D2BA30A72DCB70110079B380 /* Admob.swift in Sources */,
 				D20E09872DA0EED500FE2D28 /* HintView.swift in Sources */,
+				D249A0F22DF9835400462CF5 /* NoticeView.swift in Sources */,
 				D26544952D9AD5F1005E4CA4 /* PokebellWidget.swift in Sources */,
 				D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */,
 				D2AF15362D4A351C00A78453 /* Message.swift in Sources */,
@@ -348,7 +349,6 @@
 				D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */,
 				D22D8F702DF05AF700B3E6FD /* Notification.swift in Sources */,
 				D2AF15392D4A38D600A78453 /* FirestoreClient.swift in Sources */,
-				D2BA30AA2DD49F650079B380 /* TestView.swift in Sources */,
 				D2AF14DC2D3FDE9100A78453 /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +360,7 @@
 				D2BA30A82DD49CE60079B380 /* Admob.swift in Sources */,
 				D2AF15372D4A351C00A78453 /* Message.swift in Sources */,
 				D20E09862DA0EED500FE2D28 /* HintView.swift in Sources */,
+				D249A0F32DF9835400462CF5 /* NoticeView.swift in Sources */,
 				D2AF14E92D40FB7000A78453 /* PokebellWidgetBundle.swift in Sources */,
 				D26544922D9AD24D005E4CA4 /* ContentView.swift in Sources */,
 				D26544972D9B6D54005E4CA4 /* PhoneView.swift in Sources */,
@@ -369,7 +370,6 @@
 				D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D22D8F712DF05AF700B3E6FD /* Notification.swift in Sources */,
 				D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */,
-				D2BA30AB2DD49F650079B380 /* TestView.swift in Sources */,
 				D2AF15432D951A2900A78453 /* UserDefaultsKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
