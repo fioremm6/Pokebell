@@ -7,8 +7,9 @@
 
 import SwiftUI
 import WidgetKit
-
+import TipKit
 import FirebaseFirestore
+
 
 
 struct MessageView: View {
@@ -26,43 +27,48 @@ struct MessageView: View {
             }
     }
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(filteredMessages, id: \.self) { message in
-                    HStack {
-                        Image(systemName: "envelope.fill")
-                        Text(message.text)
-                            .padding(.bottom, 5)
-                        Spacer()
-                        Image(systemName: "phone.fill")
-                        Text(message.sender)
-                            .padding(.bottom, 5)
-                    }
-                    .swipeActions {
-                        // 削除アクション
-                        Button {
-                            deleteMessage(message) // メッセージを削除
-                        } label: {
-                            Image(systemName: "trash.fill") // SFSymbolのゴミ箱アイコン
+        ZStack(alignment: .topLeading) {
+            Color("pink3")
+                .ignoresSafeArea()
+            VStack {
+                NavigationView {
+                    List {
+                        ForEach(filteredMessages, id: \.self) { message in
+                            HStack {
+                                Image(systemName: "envelope.fill")
+                                Text(message.text)
+                                    .padding(.bottom, 5)
+                                Spacer()
+                                Image(systemName: "phone.fill")
+                                Text(message.sender)
+                                    .padding(.bottom, 5)
+                            }
+                            .swipeActions {
+                                // 削除アクション
+                                Button {
+                                    deleteMessage(message) // メッセージを削除
+                                } label: {
+                                    Image(systemName: "trash.fill") // SFSymbolのゴミ箱アイコン
+                                }
+                                .tint(.red) // 削除ボタンの色を赤に設定
+                            }
                         }
-                        .tint(.red) // 削除ボタンの色を赤に設定
+                        .onDelete(perform: deleteMessages) // スワイプで削除できるようにする
+                    }
+                    //            .listStyle(.plain)
+                    .onChange(of: filteredMessages){
+                        
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
+                    .navigationBarTitleTextColor(Color("blackgray"))
+                    .navigationTitle(phoneNumber)
+                    .foregroundColor(Color("blackgray"))
+                    .font(.custom("x8y12pxTheStrongGamer", size: 15))
+                    .onDisappear {
+                        print("testt")
+                        WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
-                .onDelete(perform: deleteMessages) // スワイプで削除できるようにする
-            }
-//            .listStyle(.plain)
-            .onChange(of: filteredMessages){
-               
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-            .navigationBarTitleTextColor(Color("blackgray"))
-            .navigationTitle(phoneNumber)
-            .background(Color("pink3"))
-            .foregroundColor(Color("blackgray"))
-            .font(.custom("x8y12pxTheStrongGamer", size: 15))
-            .onDisappear {
-                print("testt")
-                WidgetCenter.shared.reloadAllTimelines()
             }
         }
     }

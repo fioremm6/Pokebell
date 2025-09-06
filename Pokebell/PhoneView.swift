@@ -6,8 +6,27 @@
 //
 
 import SwiftUI
+import WhatsNewKit
+import TipKit
+
+struct HashTagPostButtonTip: Tip {
+    var image: Image? {
+        Image(systemName: "star.bubble")
+    }
+    var title: Text {
+        Text("自分の電話番号を入力してください。最後に＃を２回押して登録完了です！")
+    }
+    var message: Text? {
+        Text("Double-tap a message, then choose a Tapback, like a ♥︎.")
+    }
+    
+    
+}
 
 struct PhoneView: View {
+    
+    var hashtagButtonTip = HashTagPostButtonTip()
+    
     @EnvironmentObject var messageModel: MessageModel
     @State private var phonenumInput: String = ""
     @State private var textnumInput: String = ""
@@ -17,26 +36,71 @@ struct PhoneView: View {
     @State var isShowingHintView = false
     
     
+    
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
+    @State
+        var whatsNew: WhatsNew? = WhatsNew(
+            title: "Bellmyの使い方",
+            features: [
+                .init(
+                    image: .init(
+                        systemName: "phone.fill",
+                        foregroundColor: Color("blackgray")
+                    ),
+                    title: "自分の電話番号を登録しよう。",
+                    subtitle: "初めに自分の電話番号を登録します。自分の電話番号11桁を入力して、最後に＃を２回押して設定完了です。"
+                ),
+                .init(
+                    image: .init(
+                        systemName: "envelope.fill",
+                        foregroundColor: Color("blackgray")
+                    ),
+                    title: "メッセージを送ってみよう。",
+                    subtitle: "送りたい相手の電話番号11桁を入力します。次に送りたいメッセージを入力し、最後に＃を２回押して送信完了です。"
+                
+                ),
+                .init(
+                    image: .init(
+                        systemName: "widget.small.badge.plus",
+                        foregroundColor: Color("blackgray")
+                    ),
+                    title: "ホーム画面のウィジェットを追加しよう。",
+                    subtitle: "ポケベルの色はアプリ内で変えることができます。"
+                
+                ),
+                .init(
+                    image: .init(
+                        systemName: "questionmark.bubble",
+                        foregroundColor: Color("blackgray")
+                    ),
+                    title: "＃＃の秘密",
+                    subtitle: "公衆電話からポケベルにメッセージを送っていた時代、最後に＃＃をつけることでメッセージを送ることができました。このアプリではそこまで再現しています！"
+                
+                )
+                // ...
+            ]
+        )
+
     var phoneSection: some View {
         HStack {
-            Button {
-                isShowingAddressView = true
-            } label: {
+//            Button {
+//                isShowingAddressView = false
+//            } label: {
                 Image(systemName: "phone.fill")
                     .foregroundColor(Color("blackgray"))
                 //                                                    .resizable()
                     .scaledToFit()
                     .frame(width: 20)
                     .padding(.top,5)
-            }
-            .sheet(isPresented: $isShowingAddressView) {
-                AddressView(phoneNumInput: $phonenumInput)
-            }
+//            }
+//            .sheet(isPresented: $isShowingAddressView) {
+//                //AddressView(phoneNumInput: $phonenumInput)
+//            }
             
             Text(":")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
+                .popoverTip(hashtagButtonTip)
             Text("\(phonenumInput)")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
             Spacer()
@@ -45,18 +109,18 @@ struct PhoneView: View {
     
     var textSection: some View {
         HStack {
-            Button {
-                isShowingHintView = true
-            } label: {
+//            Button {
+//                isShowingHintView = false
+//            } label: {
                 Image(systemName: "envelope.fill")
                     .foregroundColor(Color("blackgray"))
                     .scaledToFit()
                     .frame(width: 20)
                     .padding(.top,5)
-            }
-            .sheet(isPresented: $isShowingHintView) {
-               HintView()
-            }
+//            }
+//            .sheet(isPresented: $isShowingHintView) {
+//               //HintView()
+//            }
             Text(":")
                 .foregroundColor(Color("blackgray"))
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
@@ -71,7 +135,15 @@ struct PhoneView: View {
             Color("pink3")
                 .edgesIgnoringSafeArea(.all)
             VStack {
-               
+////                Button {
+////                   
+////                            } label: {
+//                                Text("119")
+//                                    .foregroundColor(Color("blackgray"))
+//                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
+////                            }
+////                            .sheet(whatsNew: self.$whatsNew)
+//                            
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
                         .fill(Color("blackgray"))
@@ -162,13 +234,18 @@ struct PhoneView: View {
                     }
                     
                 }
-                
                 .padding()
             }
-            
         }
-    
+        .sheet(whatsNew: self.$whatsNew)
+        .task {
+            try? Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+        }
     }
+    
     
     
     private func handleInput(_ number: String) {
@@ -216,6 +293,7 @@ struct PhoneView: View {
         
         //               messageModel.messages.append(currentInput)
     }
+    
     private func deleteInput() {
         if phonenumInput.count >= 11 {
             textnumInput = String(textnumInput.dropLast())

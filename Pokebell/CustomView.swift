@@ -20,7 +20,7 @@ struct CustomView: View {
             Text("Widget Custom")
                 .font(.custom("x8y12pxTheStrongGamer", size: 30))
                 .foregroundColor(Color("blackgray"))
-                .padding(.top,100)
+                .padding(.top,130)
                 .padding(.bottom,30)
             PokeSelectedColor(color: Color(selectedColor))
                 .padding(20)
@@ -29,13 +29,15 @@ struct CustomView: View {
             Spacer()
             HStack(spacing: 16) {
                 ForEach(["pink3", "pokegray", "widgetblue","widgetpurple","widgetblack"], id: \.self) { colorName in
-                    Button(action: {
+                    Button {
+                        let generator = UIImpactFeedbackGenerator(style: .soft)
+                        generator.impactOccurred()
                         withAnimation {
                             selectedColor = colorName
                             appGroupUserDefaults.set(colorName, forKey: "WidgetColor")
                             refreshWidget()
                         }
-                    }) {
+                    } label: {
                         ZStack {
                             Color(colorName)
                                 .frame(width: 40, height: 40)
@@ -60,12 +62,14 @@ struct CustomView: View {
            
             
         }
+        .background(Color("gray"))
     }
     
     private func refreshWidget() {
         WidgetCenter.shared.reloadAllTimelines()
     }
 }
+
 
 struct PokeSelectedColor: View {
     let color: Color
@@ -79,7 +83,7 @@ struct PokeSelectedColor: View {
                     Spacer()
                 }
             }
-            .frame(height: 190)
+            .frame(height: 170)
     }
 }
 
@@ -92,7 +96,7 @@ struct PokeGreenBorder: View {
             }
             .padding(.horizontal, 10)
             .padding(.top,10)
-            .frame(height: 110)
+            .frame(height: 100)
     }
 }
 
@@ -126,7 +130,7 @@ struct PokeGreenPart: View {
                 }
             }
             .padding(10)
-            .frame(height: 100)
+            .frame(height: 90)
     }
 }
 
