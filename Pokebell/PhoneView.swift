@@ -9,23 +9,23 @@ import SwiftUI
 import WhatsNewKit
 import TipKit
 
-struct HashTagPostButtonTip: Tip {
-    var image: Image? {
-        Image(systemName: "star.bubble")
-    }
-    var title: Text {
-        Text("自分の電話番号を入力してください。最後に＃を２回押して登録完了です！")
-    }
-    var message: Text? {
-        Text("Double-tap a message, then choose a Tapback, like a ♥︎.")
-    }
+//struct HashTagPostButtonTip: Tip {
+//    var image: Image? {
+//        Image(systemName: "star.bubble")
+//    }
+//    var title: Text {
+//        Text("自分の電話番号を入力してください。最後に＃を２回押して登録完了です！")
+//    }
+//    var message: Text? {
+//        Text("Double-tap a message, then choose a Tapback, like a ♥︎.")
+//    }
     
     
-}
+//}
 
 struct PhoneView: View {
     
-    var hashtagButtonTip = HashTagPostButtonTip()
+//    var hashtagButtonTip = HashTagPostButtonTip()
     
     @EnvironmentObject var messageModel: MessageModel
     @State private var phonenumInput: String = ""
@@ -34,13 +34,13 @@ struct PhoneView: View {
     @FocusState private var isFocused: Bool
     @State var isShowingAddressView = false
     @State var isShowingHintView = false
+    @State private var isWhatsNewPresented = false
     
     
     
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     
-    @State
-        var whatsNew: WhatsNew? = WhatsNew(
+    @State var whatsNew: WhatsNew? = WhatsNew(
             title: "Bellmyの使い方",
             features: [
                 .init(
@@ -100,7 +100,7 @@ struct PhoneView: View {
             
             Text(":")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                .popoverTip(hashtagButtonTip)
+//                .popoverTip(hashtagButtonTip)
             Text("\(phonenumInput)")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
             Spacer()
@@ -113,7 +113,7 @@ struct PhoneView: View {
 //                isShowingHintView = false
 //            } label: {
                 Image(systemName: "envelope.fill")
-                    .foregroundColor(Color("blackgray"))
+                .foregroundColor(Color("blackgray"))
                     .scaledToFit()
                     .frame(width: 20)
                     .padding(.top,5)
@@ -134,6 +134,22 @@ struct PhoneView: View {
         ZStack {
             Color("pink3")
                 .edgesIgnoringSafeArea(.all)
+            HStack {
+                Spacer()
+                Button {
+                    isWhatsNewPresented = true
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                        .foregroundColor(Color("blackgray"))
+                        .font(.system(size: 25))
+                        .padding(.bottom,650)
+                        .padding(.horizontal,20)
+                }
+            }
+            .sheet(isPresented: $isWhatsNewPresented) {
+                    // WhatsNew画面を表示
+                    WhatsNewView(whatsNew: whatsNew!)
+                }
             VStack {
 ////                Button {
 ////                   
@@ -178,10 +194,12 @@ struct PhoneView: View {
                     VStack {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 20) {
                             ForEach(["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"], id: \.self) { number in
-                                Button(action: {
+                                Button {
                                     handleInput(number)
+                                    let generator = UIImpactFeedbackGenerator(style: .heavy)
+                                    generator.impactOccurred()
                                     
-                                }) {
+                                } label: {
                                     Text(number)
                                         .font(.custom("x8y12pxTheStrongGamer", size: 25))
                                         .padding(.bottom,7)
@@ -192,7 +210,11 @@ struct PhoneView: View {
                                         .shadow(color: Color("pokepink"),radius: 5)
                                 }
                             }
-                            Button(action: resetInput) {
+                            Button {
+                                resetInput()
+                                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                                generator.impactOccurred()
+                            } label: {
                                 Image(systemName: "arrow.clockwise")
                                     .foregroundColor(Color("blackgray"))
                                     .frame(width: 60, height: 60)
@@ -201,7 +223,11 @@ struct PhoneView: View {
                                     .shadow(color: Color("pokepink"),radius: 5)
                                 
                             }
-                            Button(action: resetInput) { //使わない
+                            Button {
+                                resetInput()
+                                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                                generator.impactOccurred()
+                            } label: {
                                 Image(systemName: "arrow.clockwise")
                                     .foregroundColor(.white)
                                     .frame(width: 60, height: 60)
@@ -211,7 +237,11 @@ struct PhoneView: View {
                                 
                             }
                             .opacity(0)
-                            Button(action: deleteInput) {
+                            Button {
+                                deleteInput()
+                                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                                generator.impactOccurred()
+                            } label: {
                                 Image(systemName: "delete.left")
                                     .foregroundColor(Color("blackgray"))
                                     .frame(width: 60, height: 60)
