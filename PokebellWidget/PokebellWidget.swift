@@ -15,34 +15,76 @@ struct Provider: TimelineProvider {
     func getSnapshot(in context: Context, completion: @escaping (MessageEntry) -> ()) {
         completion(.placeholder)
     }
-    
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+//    func getTimeline(in context: Context, completion: @escaping (Timeline<MessageEntry>) -> ()) {
+//            let latestMessage = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")?.string(forKey: "latestMessage") ?? "No message"
+//            let latestSender  = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")?.string(forKey: "latestSender") ?? ""
+//            
+//            let entry = MessageEntry(sender: latestSender, message: latestMessage)
+//            let timeline = Timeline(entries: [entry], policy: .after(.now.addingTimeInterval(60)))
+//            completion(timeline)
+//        }
+    func getTimeline(in context: Context, completion: @escaping (Timeline<MessageEntry>) -> ()) {
         Task {
-            let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 15, to: .now) ?? .now.addingTimeInterval(15 * 60)
+            let nextUpdate = Date().addingTimeInterval(900)
             do {
-                
                 let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
                 let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
-                if messages.isEmpty {
-                throw NSError()
-                }
 
-                let latestMessage = messages[0]
-                let entry = MessageEntry(sender: latestMessage.sender, message: latestMessage.text)
-                let timeline = Timeline(
-                    entries: [entry],
-                    policy: .after(nextUpdateDate)
-                )
-                completion(timeline)
+                if let latest = messages.first {
+                    // 前回のメッセージと違うなら通知
+                    let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
+                    let oldMessage = defaults?.string(forKey: "latestMessage")
+                    if oldMessage != latest.text {
+                        defaults?.set(latest.text, forKey: "latestMessage")
+                        defaults?.set(latest.sender, forKey: "latestSender")
+
+                        // 通知音
+                        let content = UNMutableNotificationContent()
+                        content.sound = UNNotificationSound(named: .init("pager.caf"))
+                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+                        try await UNUserNotificationCenter.current().add(request)
+                    }
+
+                    let entry = MessageEntry(sender: latest.sender, message: latest.text)
+                    completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
+                    return
+                }
             } catch {
-                let timeline = Timeline(
-                    entries: [MessageEntry(sender: "", message: "No meesage")],
-                    policy: .after(nextUpdateDate)
-                )
-                completion(timeline)
+                print("Error fetching messages: \(error)")
             }
+
+            // fallback
+            let entry = MessageEntry(sender: "", message: "No message")
+            completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
         }
     }
+//    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+//        Task {
+//            let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 15, to: .now) ?? .now.addingTimeInterval(15 * 60)
+//            do {
+//                
+//                let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
+//                let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
+//                if messages.isEmpty {
+//                throw NSError()
+//                }
+//
+//                let latestMessage = messages[0]
+//                let entry = MessageEntry(sender: latestMessage.sender, message: latestMessage.text)
+//                let timeline = Timeline(
+//                    entries: [entry],
+//                    policy: .after(nextUpdateDate)
+//                )
+//                completion(timeline)
+//            } catch {
+//                let timeline = Timeline(
+//                    entries: [MessageEntry(sender: "", message: "No meesage")],
+//                    policy: .after(nextUpdateDate)
+//                )
+//                completion(timeline)
+//            }
+//        }
+//    }
 }
 
 struct MessageEntry: TimelineEntry {

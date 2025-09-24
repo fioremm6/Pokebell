@@ -24,18 +24,18 @@ class FirestoreClient {
         try await messageRef.whereField("receiver", isEqualTo: myNumber).order(by: "date", descending: true).getDocuments().documents.compactMap { try? $0.data(as: Message.self) }
     }
     static func deleteMessage(id: String) async throws {
+        let messageRef = Firestore.firestore().collection("messages").document(id)
+        
+        // ドキュメントを削除
+        try await messageRef.delete()
+    }
+    
+    // 複数のメッセージを削除するメソッド
+    static func deleteMessages(ids: [String]) async throws {
+        for id in ids {
             let messageRef = Firestore.firestore().collection("messages").document(id)
-            
-            // ドキュメントを削除
             try await messageRef.delete()
         }
-        
-        // 複数のメッセージを削除するメソッド
-        static func deleteMessages(ids: [String]) async throws {
-            for id in ids {
-                let messageRef = Firestore.firestore().collection("messages").document(id)
-                try await messageRef.delete()
-            }
-        }
+    }
     
 }

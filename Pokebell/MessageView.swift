@@ -80,7 +80,7 @@ struct MessageView: View {
             print("Message ID is nil, cannot delete message.")
             return
         }
-
+        
         // Firestoreからも削除する処理を追加
         Task {
             do {
@@ -88,9 +88,9 @@ struct MessageView: View {
                 try await FirestoreClient.deleteMessage(id: messageId)
                 
                 // ローカルのメッセージリストから削除
-//                if let index = messages.firstIndex(where: { $0.id == messageId }) {
-//                    messageModel.messages.remove(at: index)
-//                }
+                //                if let index = messages.firstIndex(where: { $0.id == messageId }) {
+                //                    messageModel.messages.remove(at: index)
+                //                }
             } catch {
                 print("Error deleting message: \(error.localizedDescription)")
             }
@@ -108,7 +108,7 @@ struct MessageView: View {
                 try await FirestoreClient.deleteMessages(ids: messagesToDelete.map { $0.id! })
                 
                 // ローカルのメッセージリストから削除
-//                messageModel.messages.remove(atOffsets: offsets)
+                //                messageModel.messages.remove(atOffsets: offsets)
             } catch {
                 print("Error deleting messages: \(error.localizedDescription)")
             }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,7 @@
 		D29CF14D2E27AEF5009C33FD /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = D29CF14C2E27AEF5009C33FD /* WhatsNewKit */; };
 		D29CF14F2E27AF86009C33FD /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = D29CF14E2E27AF86009C33FD /* WhatsNewKit */; };
 		D29CF1512E27AF92009C33FD /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D29CF1502E27AF92009C33FD /* GoogleMobileAds */; };
+		D2A07BA52E827F170081EF50 /* NotificationExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D2A07B9E2E827F170081EF50 /* NotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */; };
 		D2AF14CE2D3FD7CC00A78453 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */; };
 		D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */; };
@@ -49,18 +50,21 @@
 		D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15382D4A38D600A78453 /* FirestoreClient.swift */; };
 		D2AF153C2D4A403800A78453 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2AF153B2D4A403800A78453 /* FirebaseFirestore */; };
 		D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */; };
-		D2AF15422D951A2900A78453 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */; };
-		D2AF15432D951A2900A78453 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */; };
 		D2AF15452D95576400A78453 /* Dott-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15442D95576400A78453 /* Dott-Font.ttf */; };
 		D2AF15462D95576400A78453 /* Dott-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15442D95576400A78453 /* Dott-Font.ttf */; };
-		D2AF15482D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */; };
-		D2AF15492D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */; };
 		D2BA30A12DCB6DF10079B380 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D2BA30A02DCB6DF10079B380 /* GoogleMobileAds */; };
 		D2BA30A72DCB70110079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
 		D2BA30A82DD49CE60079B380 /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA30A52DCB70110079B380 /* Admob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D2A07BA32E827F170081EF50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2AF14C02D3FD7CC00A78453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2A07B9D2E827F170081EF50;
+			remoteInfo = NotificationExtension;
+		};
 		D2AF14EF2D40FB7100A78453 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2AF14C02D3FD7CC00A78453 /* Project object */;
@@ -78,6 +82,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				D2AF14F12D40FB7100A78453 /* PokebellWidgetExtension.appex in Embed Foundation Extensions */,
+				D2A07BA52E827F170081EF50 /* NotificationExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +96,7 @@
 		D22D8F6F2DF05AF700B3E6FD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		D249A0F12DF9835400462CF5 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2A07B9E2E827F170081EF50 /* NotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF14C82D3FD7CC00A78453 /* Pokebell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokebell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellApp.swift; sourceTree = "<group>"; };
 		D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,13 +116,33 @@
 		D2AF15382D4A38D600A78453 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 		D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PokebellWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D2AF153E2D537E4D00A78453 /* Pokebell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pokebell.entitlements; sourceTree = "<group>"; };
-		D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		D2AF15442D95576400A78453 /* Dott-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dott-Font.ttf"; sourceTree = "<group>"; };
-		D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = x12y12pxMaruMinya.ttf; sourceTree = "<group>"; };
 		D2BA30A52DCB70110079B380 /* Admob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D2A07BA82E827F170081EF50 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D2A07B9D2E827F170081EF50 /* NotificationExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D27F47802E840F6C0034A0E4 /* ThirdParty */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ThirdParty; sourceTree = "<group>"; };
+		D2A07B9F2E827F170081EF50 /* NotificationExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D2A07BA82E827F170081EF50 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NotificationExtension; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		D2A07B9B2E827F170081EF50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AF14C52D3FD7CC00A78453 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,6 +177,7 @@
 			children = (
 				D2AF14CA2D3FD7CC00A78453 /* Pokebell */,
 				D2AF14E72D40FB7000A78453 /* PokebellWidget */,
+				D2A07B9F2E827F170081EF50 /* NotificationExtension */,
 				D2AF14E22D40FB7000A78453 /* Frameworks */,
 				D2AF14C92D3FD7CC00A78453 /* Products */,
 			);
@@ -161,6 +188,7 @@
 			children = (
 				D2AF14C82D3FD7CC00A78453 /* Pokebell.app */,
 				D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */,
+				D2A07B9E2E827F170081EF50 /* NotificationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,13 +204,12 @@
 				D249A0F12DF9835400462CF5 /* NoticeView.swift */,
 				D2AF14CD2D3FD7CC00A78453 /* ContentView.swift */,
 				D2AF14D92D3FD82E00A78453 /* MessageView.swift */,
-				D2AF15412D951A2900A78453 /* UserDefaultsKey.swift */,
+				D27F47802E840F6C0034A0E4 /* ThirdParty */,
 				D2AF14DB2D3FDE9100A78453 /* PhoneView.swift */,
 				D20E097F2DA0BD7300FE2D28 /* AddressView.swift */,
 				D20E09852DA0EED500FE2D28 /* HintView.swift */,
 				D20E09882DA12CEB00FE2D28 /* CustomView.swift */,
 				D2BA30A52DCB70110079B380 /* Admob.swift */,
-				D2AF15472D97CEB800A78453 /* x12y12pxMaruMinya.ttf */,
 				D2AF15352D4A351C00A78453 /* Message.swift */,
 				D2AF15382D4A38D600A78453 /* FirestoreClient.swift */,
 				D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */,
@@ -224,6 +251,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D2A07B9D2E827F170081EF50 /* NotificationExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2A07BA92E827F170081EF50 /* Build configuration list for PBXNativeTarget "NotificationExtension" */;
+			buildPhases = (
+				D2A07B9A2E827F170081EF50 /* Sources */,
+				D2A07B9B2E827F170081EF50 /* Frameworks */,
+				D2A07B9C2E827F170081EF50 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D2A07B9F2E827F170081EF50 /* NotificationExtension */,
+			);
+			name = NotificationExtension;
+			packageProductDependencies = (
+			);
+			productName = NotificationExtension;
+			productReference = D2A07B9E2E827F170081EF50 /* NotificationExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D2AF14C72D3FD7CC00A78453 /* Pokebell */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2AF14D62D3FD7D100A78453 /* Build configuration list for PBXNativeTarget "Pokebell" */;
@@ -237,6 +286,10 @@
 			);
 			dependencies = (
 				D2AF14F02D40FB7100A78453 /* PBXTargetDependency */,
+				D2A07BA42E827F170081EF50 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D27F47802E840F6C0034A0E4 /* ThirdParty */,
 			);
 			name = Pokebell;
 			packageProductDependencies = (
@@ -261,6 +314,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				D27F47802E840F6C0034A0E4 /* ThirdParty */,
+			);
 			name = PokebellWidgetExtension;
 			packageProductDependencies = (
 				D2AF153B2D4A403800A78453 /* FirebaseFirestore */,
@@ -279,9 +335,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					D2A07B9D2E827F170081EF50 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					D2AF14C72D3FD7CC00A78453 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -310,11 +369,19 @@
 			targets = (
 				D2AF14C72D3FD7CC00A78453 /* Pokebell */,
 				D2AF14E02D40FB7000A78453 /* PokebellWidgetExtension */,
+				D2A07B9D2E827F170081EF50 /* NotificationExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D2A07B9C2E827F170081EF50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AF14C62D3FD7CC00A78453 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,7 +390,6 @@
 				D2AF14D32D3FD7D100A78453 /* Preview Assets.xcassets in Resources */,
 				D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */,
 				D265449A2D9B71AE005E4CA4 /* GoogleService-Info.plist in Resources */,
-				D2AF15482D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,13 +401,19 @@
 				D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */,
 				D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */,
 				D265449B2D9B71AE005E4CA4 /* GoogleService-Info.plist in Resources */,
-				D2AF15492D97CEB800A78453 /* x12y12pxMaruMinya.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D2A07B9A2E827F170081EF50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AF14C42D3FD7CC00A78453 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,7 +425,6 @@
 				D26544952D9AD5F1005E4CA4 /* PokebellWidget.swift in Sources */,
 				D2AF14DA2D3FD82E00A78453 /* MessageView.swift in Sources */,
 				D2AF15362D4A351C00A78453 /* Message.swift in Sources */,
-				D2AF15422D951A2900A78453 /* UserDefaultsKey.swift in Sources */,
 				D20E098A2DA12CEB00FE2D28 /* CustomView.swift in Sources */,
 				D20E09802DA0BD7300FE2D28 /* AddressView.swift in Sources */,
 				D2AF14CC2D3FD7CC00A78453 /* PokebellApp.swift in Sources */,
@@ -380,13 +451,17 @@
 				D2AF153A2D4A38D600A78453 /* FirestoreClient.swift in Sources */,
 				D22D8F712DF05AF700B3E6FD /* Notification.swift in Sources */,
 				D2AF14EB2D40FB7000A78453 /* PokebellWidget.swift in Sources */,
-				D2AF15432D951A2900A78453 /* UserDefaultsKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D2A07BA42E827F170081EF50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2A07B9D2E827F170081EF50 /* NotificationExtension */;
+			targetProxy = D2A07BA32E827F170081EF50 /* PBXContainerItemProxy */;
+		};
 		D2AF14F02D40FB7100A78453 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AF14E02D40FB7000A78453 /* PokebellWidgetExtension */;
@@ -395,6 +470,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D2A07BA62E827F170081EF50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QQZS279PYH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebellmy.NotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2A07BA72E827F170081EF50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QQZS279PYH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebellmy.NotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D2AF14D42D3FD7D100A78453 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -649,6 +776,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D2A07BA92E827F170081EF50 /* Build configuration list for PBXNativeTarget "NotificationExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2A07BA62E827F170081EF50 /* Debug */,
+				D2A07BA72E827F170081EF50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2AF14C32D3FD7CC00A78453 /* Build configuration list for PBXProject "Pokebell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
