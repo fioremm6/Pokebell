@@ -9,31 +9,14 @@ import SwiftUI
 import WhatsNewKit
 import TipKit
 
-//struct HashTagPostButtonTip: Tip {
-//    var image: Image? {
-//        Image(systemName: "star.bubble")
-//    }
-//    var title: Text {
-//        Text("自分の電話番号を入力してください。最後に＃を２回押して登録完了です！")
-//    }
-//    var message: Text? {
-//        Text("Double-tap a message, then choose a Tapback, like a ♥︎.")
-//    }
-    
-    
-//}
-
 struct PhoneView: View {
     
-//    var hashtagButtonTip = HashTagPostButtonTip()
     
     @EnvironmentObject var messageModel: MessageModel
     @State private var phonenumInput: String = ""
     @State private var textnumInput: String = ""
     @State private var errorMessage: String? = nil
     @FocusState private var isFocused: Bool
-    @State var isShowingAddressView = false
-    @State var isShowingHintView = false
     @State private var isWhatsNewPresented = false
     
     
@@ -84,23 +67,14 @@ struct PhoneView: View {
     
     var phoneSection: some View {
         HStack {
-            //            Button {
-            //                isShowingAddressView = false
-            //            } label: {
             Image(systemName: "phone.fill")
                 .foregroundColor(Color("blackgray"))
-            //                                                    .resizable()
                 .scaledToFit()
                 .frame(width: 20)
                 .padding(.top,5)
-            //            }
-            //            .sheet(isPresented: $isShowingAddressView) {
-            //                //AddressView(phoneNumInput: $phonenumInput)
-            //            }
-            
             Text(":")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
-            //                .popoverTip(hashtagButtonTip)
+           
             Text("\(phonenumInput)")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
             Spacer()
@@ -109,18 +83,11 @@ struct PhoneView: View {
     
     var textSection: some View {
         HStack {
-            //            Button {
-            //                isShowingHintView = false
-            //            } label: {
             Image(systemName: "envelope.fill")
                 .foregroundColor(Color("blackgray"))
                 .scaledToFit()
                 .frame(width: 20)
                 .padding(.top,5)
-            //            }
-            //            .sheet(isPresented: $isShowingHintView) {
-            //               //HintView()
-            //            }
             Text(":")
                 .foregroundColor(Color("blackgray"))
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
@@ -145,21 +112,12 @@ struct PhoneView: View {
                         .padding(.bottom,650)
                         .padding(.horizontal,20)
                 }
+            
             }
             .sheet(isPresented: $isWhatsNewPresented) {
-                // WhatsNew画面を表示
                 WhatsNewView(whatsNew: whatsNew!)
             }
             VStack {
-                ////                Button {
-                ////
-                ////                            } label: {
-                //                                Text("119")
-                //                                    .foregroundColor(Color("blackgray"))
-                //                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                ////                            }
-                ////                            .sheet(whatsNew: self.$whatsNew)
-                //
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
                         .fill(Color("blackgray"))
@@ -215,8 +173,8 @@ struct PhoneView: View {
                                 let generator = UIImpactFeedbackGenerator(style: .heavy)
                                 generator.impactOccurred()
                             } label: {
-                                Text("◎")
-                                    .font(.custom("x8y12pxTheStrongGamer", size: 25))
+                                Text("reset")
+                                    .font(.custom("x8y12pxTheStrongGamer", size: 15))
                                     .padding(.bottom,7)
                                     .foregroundColor(Color("blackgray"))
                                     .frame(width: 60, height: 60)

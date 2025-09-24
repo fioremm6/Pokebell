@@ -25,22 +25,19 @@ struct Provider: TimelineProvider {
 //        }
     func getTimeline(in context: Context, completion: @escaping (Timeline<MessageEntry>) -> ()) {
         Task {
-            let nextUpdate = Date().addingTimeInterval(900)
+            let nextUpdate = Date().addingTimeInterval(15*60)
             do {
                 let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
                 let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
-
                 if let latest = messages.first {
-                    // 前回のメッセージと違うなら通知
                     let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
                     let oldMessage = defaults?.string(forKey: "latestMessage")
                     if oldMessage != latest.text {
                         defaults?.set(latest.text, forKey: "latestMessage")
                         defaults?.set(latest.sender, forKey: "latestSender")
 
-                        // 通知音
                         let content = UNMutableNotificationContent()
-                        content.sound = UNNotificationSound(named: .init("pager.caf"))
+                        content.sound = UNNotificationSound(named: .init("sound.caf"))
                         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
                         try await UNUserNotificationCenter.current().add(request)
                     }
