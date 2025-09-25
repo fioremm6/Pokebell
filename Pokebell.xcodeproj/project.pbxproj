@@ -16,8 +16,6 @@
 		D26544952D9AD5F1005E4CA4 /* PokebellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */; };
 		D265449A2D9B71AE005E4CA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */; };
 		D265449B2D9B71AE005E4CA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */; };
-		D27F478F2E84357B0034A0E4 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = D27F478E2E84357B0034A0E4 /* sound.caf */; };
-		D27F47902E84357B0034A0E4 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = D27F478E2E84357B0034A0E4 /* sound.caf */; };
 		D29CF14D2E27AEF5009C33FD /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = D29CF14C2E27AEF5009C33FD /* WhatsNewKit */; };
 		D29CF14F2E27AF86009C33FD /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = D29CF14E2E27AF86009C33FD /* WhatsNewKit */; };
 		D29CF1512E27AF92009C33FD /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D29CF1502E27AF92009C33FD /* GoogleMobileAds */; };
@@ -69,7 +67,6 @@
 /* Begin PBXFileReference section */
 		D22D8F6F2DF05AF700B3E6FD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D27F478E2E84357B0034A0E4 /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.caf; sourceTree = "<group>"; };
 		D2AF14C82D3FD7CC00A78453 /* Pokebell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokebell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellApp.swift; sourceTree = "<group>"; };
 		D2AF14CF2D3FD7D100A78453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				D2AF153D2D537D8800A78453 /* PokebellWidgetExtension.entitlements */,
-				D27F478E2E84357B0034A0E4 /* sound.caf */,
 				D2AF15442D95576400A78453 /* Dott-Font.ttf */,
 				D2AF14E82D40FB7000A78453 /* PokebellWidgetBundle.swift */,
 				D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */,
@@ -304,7 +300,6 @@
 			files = (
 				D2AF15452D95576400A78453 /* Dott-Font.ttf in Resources */,
 				D2AF14D32D3FD7D100A78453 /* Preview Assets.xcassets in Resources */,
-				D27F478F2E84357B0034A0E4 /* sound.caf in Resources */,
 				D2AF14D02D3FD7D100A78453 /* Assets.xcassets in Resources */,
 				D265449A2D9B71AE005E4CA4 /* GoogleService-Info.plist in Resources */,
 			);
@@ -316,7 +311,6 @@
 			files = (
 				D2AF15462D95576400A78453 /* Dott-Font.ttf in Resources */,
 				D2AF14ED2D40FB7100A78453 /* Assets.xcassets in Resources */,
-				D27F47902E84357B0034A0E4 /* sound.caf in Resources */,
 				D2AF15402D92CE7900A78453 /* Assets.xcassets in Resources */,
 				D265449B2D9B71AE005E4CA4 /* GoogleService-Info.plist in Resources */,
 			);

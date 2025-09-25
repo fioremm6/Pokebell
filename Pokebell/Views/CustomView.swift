@@ -11,7 +11,7 @@ import WidgetKit
 
 
 struct CustomView: View {
-    // ユーザーが選択した色を保持
+
     @State private var selectedColor: String = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
     
     
@@ -43,8 +43,6 @@ struct CustomView: View {
                                 .frame(width: 40, height: 40)
                                 .cornerRadius(20)
                             
-                            
-                            // 選択されているときに二重の青いリングを表示
                             if selectedColor == colorName {
                                 Circle()
                                     .stroke(Color.blue, lineWidth: 2)

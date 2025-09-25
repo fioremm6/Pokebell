@@ -235,7 +235,7 @@ struct PhoneView: View {
                 .padding()
             }
         }
-        .sheet(whatsNew: self.$whatsNew)
+//        .sheet(whatsNew: self.$whatsNew)
         .task {
             try? Tips.configure([
                 .displayFrequency(.immediate),

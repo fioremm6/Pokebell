@@ -9,6 +9,8 @@ import SwiftUI
 import WidgetKit
 import TipKit
 import FirebaseFirestore
+import AudioToolbox
+
 
 
 
@@ -18,6 +20,7 @@ struct MessageView: View {
     
     
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
+    @State private var lastMessageCount = 0
     
     var filteredMessages: [Message] {
         messages
@@ -56,22 +59,68 @@ struct MessageView: View {
                         .onDelete(perform: deleteMessages) // スワイプで削除できるようにする
                     }
                     //            .listStyle(.plain)
-                    .onChange(of: filteredMessages){
+                    .onChange(of: filteredMessages) { newMessages in
+                        guard let latest = newMessages.first else { return }
                         
-                        WidgetCenter.shared.reloadAllTimelines()
+                        // 前回の最新メッセージと比較
+                        let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
+                        let oldMessage = defaults?.string(forKey: "latestMessage")
+                        
+                        if oldMessage != latest.text {
+                            defaults?.set(latest.text, forKey: "latestMessage")
+                            defaults?.set(latest.sender, forKey: "latestSender")
+                            
+                            // Widgetも更新
+                            WidgetCenter.shared.reloadAllTimelines()
+                            
+                            // 通知音とバナー
+                            let content = UNMutableNotificationContent()
+                            content.title = latest.sender   // 送り主
+                            content.body = latest.text      // メッセージ本文
+                            content.sound = UNNotificationSound(named: .init("bellmysound6.caf"))
+                            content.userInfo = ["source": "appMessage"] // 必要なら識別用
+                            
+                            let request = UNNotificationRequest(
+                                identifier: UUID().uuidString,
+                                content: content,
+                                trigger: nil // 即時通知
+                            )
+                            UNUserNotificationCenter.current().add(request)
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                            //                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            //                                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                            //                            }
+                            let numberOfVibrations = 6
+                            let totalDuration: TimeInterval = 4
+                            let interval = totalDuration / Double(numberOfVibrations) // 3秒÷5回 = 0.6秒ごと
+                            
+                            for i in 0..<numberOfVibrations {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + interval * Double(i)) {
+                                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                                }
+                            }
+                        }
                     }
-                    .navigationBarTitleTextColor(Color("blackgray"))
-                    .navigationTitle(phoneNumber)
-                    .foregroundColor(Color("blackgray"))
-                    .font(.custom("x8y12pxTheStrongGamer", size: 15))
-                    .onDisappear {
-                        print("testt")
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }
+                    
+                //                    .onChange(of: filteredMessages){
+                //
+                //                        WidgetCenter.shared.reloadAllTimelines()
+                //
+                //                    }
+                .navigationBarTitleTextColor(Color("blackgray"))
+                .navigationTitle(phoneNumber)
+                .foregroundColor(Color("blackgray"))
+                .font(.custom("x8y12pxTheStrongGamer", size: 15))
+                .onDisappear {
+                    print("testt")
+                    
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
                 }
             }
         }
     }
+    
     
     // メッセージを削除するメソッド
     private func deleteMessage(_ filteredMessages: Message) {
@@ -114,13 +163,15 @@ struct MessageView: View {
             }
         }
     }
-}
-
-extension View {
-    func navigationBarTitleTextColor(_ color: Color) -> some View {
-        let uiColor = UIColor(color)
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
-        return self
     }
-}
+extension View {
+        func navigationBarTitleTextColor(_ color: Color) -> some View {
+            let uiColor = UIColor(color)
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
+            return self
+        }
+    }
+
+    
+

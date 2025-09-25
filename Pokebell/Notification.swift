@@ -23,7 +23,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         
         UNUserNotificationCenter.current().delegate = self
         
-        let authOptions: UNAuthorizationOptions = [.sound]
+        let authOptions: UNAuthorizationOptions = [.alert, .sound, .badge]
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in })
         application.registerForRemoteNotifications()
         
@@ -89,7 +89,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                 }
-            completionHandler([.banner, .sound])
+            completionHandler([.alert, .sound, .badge])
         }
         func userNotificationCenter(_ center: UNUserNotificationCenter,
                                     didReceive response: UNNotificationResponse,
