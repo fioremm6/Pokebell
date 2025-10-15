@@ -58,35 +58,45 @@ struct CustomView: View {
                 }
             }
             Spacer()
-            HStack(spacing: 16) {
-                ForEach(["red.st", "blue.st", "yellow.st","green.st","pink.st","rainbow.st","gray.st"], id: \.self) { colorSticker in
-                    Button {
-                        let generator = UIImpactFeedbackGenerator(style: .soft)
-                        generator.impactOccurred()
-                        withAnimation {
-                            selectedSticker = colorSticker
-                            appGroupUserDefaults.set(colorSticker, forKey: "WidgetSticker")
-                            refreshWidget()
-                        }
-                    } label: {
-                        ZStack {
-                            Image(colorSticker)
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                            
-                            if selectedSticker == colorSticker {
-                                Circle()
-                                    .stroke(Color.blue, lineWidth: 2)
-                                    .frame(width: 80, height: 80)
+            ScrollView (.horizontal) {
+                HStack(spacing: 16) {
+                    ForEach(["red.st", "blue.st", "yellow.st","green.st","pink.st","rainbow.st","gray.st","none.st"], id: \.self) { colorSticker in
+                        Button {
+                            let generator = UIImpactFeedbackGenerator(style: .soft)
+                            generator.impactOccurred()
+                            withAnimation {
+                                selectedSticker = colorSticker
+                                appGroupUserDefaults.set(colorSticker, forKey: "WidgetSticker")
+                                refreshWidget()
+                            }
+                        } label: {
+                            ZStack {
+                                Image(colorSticker)
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .overlay {
+                                        if colorSticker == "none.st" {
+                                            Image(systemName: "circle.slash.fill")
+                                        }
+                                    }
                                 
-                                Circle()
-                                    .stroke(Color.blue.opacity(0.6), lineWidth: 2)
-                                    .frame(width: 70, height: 70)
+                                if selectedSticker == colorSticker {
+                                    Circle()
+                                        .stroke(Color.blue, lineWidth: 2)
+                                        .frame(width: 70, height: 70)
+                                    
+                                    Circle()
+                                        .stroke(Color.blue.opacity(0.6), lineWidth: 2)
+                                        .frame(width: 60, height: 60)
+                                }
                             }
                         }
                     }
                 }
+                .padding(2)
             }
+            .padding(.horizontal,30)
+            
             Spacer()
             Spacer()
             
