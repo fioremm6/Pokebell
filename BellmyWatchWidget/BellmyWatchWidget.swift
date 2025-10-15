@@ -1,73 +1,53 @@
 //
-//  PokebellWidget.swift
-//  PokebellWidget
+//  BellmyWatchWidget.swift
+//  BellmyWatchWidget
 //
-//  Created by 菊地桃々 on 2025/01/22.
+//  Created by 菊地桃々 on 2025/10/15.
 //
 
 import WidgetKit
 import SwiftUI
+
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> MessageEntry {
         .placeholder
     }
-    
+
     func getSnapshot(in context: Context, completion: @escaping (MessageEntry) -> ()) {
         completion(.placeholder)
     }
-    func getTimeline(in context: Context, completion: @escaping (Timeline<MessageEntry>) -> ()) {
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
             let nextUpdate = Date().addingTimeInterval(15*60)
-            do {
-                let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
-                let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
-                UserDefaultsKey[.saishinMessage] = messages.first?.text ?? "000000000"
-                if let latest = messages.first {
-                    let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
-                    let oldMessage = defaults?.string(forKey: "latestMessage")
-                    if oldMessage != latest.text {
-                        defaults?.set(latest.text, forKey: "latestMessage")
-                        defaults?.set(latest.sender, forKey: "latestSender")
-                        
-                        let content = UNMutableNotificationContent()
-                        content.sound = UNNotificationSound(named: .init("sound.caf"))
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
-                        try await UNUserNotificationCenter.current().add(request)
-                    }
-                    
-                    let entry = MessageEntry(sender: latest.sender, message: latest.text)
-                    completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
-                    return
-                }
-            } catch {
-                print("Error fetching messages: \(error)")
-            }
-            
-            // fallback
-            let entry = MessageEntry(sender: "", message: "No message")
+            let phoneNumber: String = UserDefaultsKey2[.phoneNumber] ?? ""
+            let message: String = UserDefaultsKey2[.saishinMessage] ?? ""
+            let entry = MessageEntry(sender: "", message: message)
             completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
         }
     }
+
+//    func relevances() async -> WidgetRelevances<Void> {
+//        // Generate a list containing the contexts this widget is relevant in.
+//    }
 }
 
 struct MessageEntry: TimelineEntry {
     let date: Date = .now
     let sender: String
     let message: String
-    
-    static let placeholder = Self(sender: "", message: "")
-    
+    static let placeholder = Self(sender: "jhjhjh", message: "66666")
 }
-let appGroupUserDefaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")!
 
-struct PokebellWidgetEntryView : View {
+struct BellmyWatchWidgetEntryView : View {
     var entry: Provider.Entry
-    @State private var offset: CGFloat = UIScreen.main.bounds.width
     
+    let appGroupUserDefaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")!
+
     var body: some View {
         VStack {
-        }
-        .containerBackground(for: .widget) {
+            Text(entry.message)
+                .font(.custom("x8y12pxTheStrongGamer", size: 20))
             ZStack {
                 Color("pink3")
                     .edgesIgnoringSafeArea(.all)
@@ -100,7 +80,8 @@ struct PokebellWidgetEntryView : View {
                                             
                                         }
                                         .foregroundStyle(Color("blackgray"))
-                                        .font(.custom("x8y12pxTheStrongGamer", size: 20))
+                                        .font(.system(size: 5))
+//                                        .font(.custom("x8y12pxTheStrongGamer", size: 20))
                                         .padding([.horizontal, .bottom], 4)
                                         
                                     }
@@ -119,28 +100,53 @@ struct PokebellWidgetEntryView : View {
                    
             
             }
+            .scaleEffect(0.68)
+            .offset(y: 5)
         }
     }
 }
 
+@main
+struct BellmyWatchWidget: Widget {
+    let kind: String = "BellmyWatchWidget"
 
-
-
-struct PokebellWidget: Widget {
-    let kind: String = "PokebellWidget"
-    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            PokebellWidgetEntryView(entry: entry)
+            if #available(watchOS 10.0, *) {
+                BellmyWatchWidgetEntryView(entry: entry)
+                    .containerBackground(.fill.tertiary, for: .widget)
+            } else {
+                BellmyWatchWidgetEntryView(entry: entry)
+                    .padding()
+                    .background()
+            }
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
     }
-    
 }
-
-#Preview(as: .systemMedium) {
-    PokebellWidget()
-} timeline: {
-    MessageEntry(sender: "1111", message: "222")
-}
+//let appGroupUserDefaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")!
+//
+//struct PokebellWidgetEntryView : View {
+//    var entry: Provider.Entry
+//    
+//    var body: some View {
+       
+//    }
+//}
+//
+//
+//
+//
+//struct PokebellWidget: Widget {
+//    let kind: String = "PokebellWidget"
+//    
+//    var body: some WidgetConfiguration {
+//        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+//            PokebellWidgetEntryView(entry: entry)
+//        }
+//        .configurationDisplayName("My Widget")
+//        .description("This is an example widget.")
+//    }
+//    
+//}

@@ -1,13 +1,14 @@
 //
-//  UserDefaultsKey.swift
-//  iWant
+//  UserDefaultskey.swift
+//  Pokebell
 //
-//  Created by Kyoya Yamaguchi on 2024/05/30.
+//  Created by 菊地桃々 on 2025/10/15.
 //
+
 
 import Foundation
 
-enum UserDefaultsKey: String {
+enum UserDefaultsKey2: String {
     case phoneNumber
     case date
     case saishinMessage
@@ -24,11 +25,11 @@ enum UserDefaultsKey: String {
     }
     
     func remove() {
-        UserDefaultsKey.sharedUserDefaults.removeObject(forKey: rawValue)
+        UserDefaultsKey2.sharedUserDefaults.removeObject(forKey: rawValue)
     }
     
     var exists: Bool {
-        UserDefaultsKey.sharedUserDefaults.object(forKey: rawValue) != nil
+        UserDefaultsKey2.sharedUserDefaults.object(forKey: rawValue) != nil
     }
 }
 
@@ -47,3 +48,4 @@ SwiftUIで簡単に使う
 @AppStorage(UserDefaultsKey.openInExternalBrowser.rawValue) var openInExternalBrowser = false
  
  */
+

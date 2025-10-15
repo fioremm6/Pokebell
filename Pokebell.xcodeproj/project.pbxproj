@@ -11,6 +11,12 @@
 		D22D8F712DF05AF700B3E6FD /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D8F6F2DF05AF700B3E6FD /* Notification.swift */; };
 		D22D8F732DF05B2200B3E6FD /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D22D8F722DF05B2200B3E6FD /* FirebaseMessaging */; };
 		D22D8F752DF05BE200B3E6FD /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D22D8F742DF05BE200B3E6FD /* FirebaseMessaging */; };
+		D260D9502E9FADCD00BB0DBA /* BellmyWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D260D9432E9FADCB00BB0DBA /* BellmyWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D260D95A2E9FAF0A00BB0DBA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E32D40FB7000A78453 /* WidgetKit.framework */; };
+		D260D95B2E9FAF0A00BB0DBA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E52D40FB7000A78453 /* SwiftUI.framework */; };
+		D260D9642E9FAF0D00BB0DBA /* BellmyWatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D260D9592E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D260D96E2E9FB26F00BB0DBA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D260D96D2E9FB26F00BB0DBA /* FirebaseMessaging */; };
+		D260D97A2E9FB68400BB0DBA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D260D9792E9FB68400BB0DBA /* FirebaseFirestore */; };
 		D26544932D9AD40D005E4CA4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E52D40FB7000A78453 /* SwiftUI.framework */; };
 		D26544942D9AD411005E4CA4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF14E32D40FB7000A78453 /* WidgetKit.framework */; };
 		D26544952D9AD5F1005E4CA4 /* PokebellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF14EA2D40FB7000A78453 /* PokebellWidget.swift */; };
@@ -41,6 +47,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D260D94E2E9FADCD00BB0DBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2AF14C02D3FD7CC00A78453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D260D9422E9FADCB00BB0DBA;
+			remoteInfo = "BellmyWatch Watch App";
+		};
+		D260D9622E9FAF0D00BB0DBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2AF14C02D3FD7CC00A78453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D260D9582E9FAF0A00BB0DBA;
+			remoteInfo = BellmyWatchWidgetExtension;
+		};
 		D2AF14EF2D40FB7100A78453 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2AF14C02D3FD7CC00A78453 /* Project object */;
@@ -51,6 +71,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D260D9512E9FADCD00BB0DBA /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D260D9502E9FADCD00BB0DBA /* BellmyWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260D9692E9FAF0D00BB0DBA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D260D9642E9FAF0D00BB0DBA /* BellmyWatchWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AF14F52D40FB7100A78453 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +108,9 @@
 
 /* Begin PBXFileReference section */
 		D22D8F6F2DF05AF700B3E6FD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		D260D9432E9FADCB00BB0DBA /* BellmyWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BellmyWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D260D9592E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BellmyWatchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D260D96C2E9FB1BE00BB0DBA /* BellmyWatchWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BellmyWatchWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D26544992D9B71AE005E4CA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2AF14C82D3FD7CC00A78453 /* Pokebell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokebell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF14CB2D3FD7CC00A78453 /* PokebellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokebellApp.swift; sourceTree = "<group>"; };
@@ -86,13 +131,50 @@
 		D2AF15442D95576400A78453 /* Dott-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dott-Font.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D260D9652E9FAF0D00BB0DBA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D260D9582E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension */;
+		};
+		D260D9742E9FB45300BB0DBA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				UserDefaultskey.swift,
+			);
+			target = D2AF14C72D3FD7CC00A78453 /* Pokebell */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D260D9442E9FADCB00BB0DBA /* BellmyWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "BellmyWatch Watch App"; sourceTree = "<group>"; };
+		D260D95C2E9FAF0A00BB0DBA /* BellmyWatchWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D260D9742E9FB45300BB0DBA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D260D9652E9FAF0D00BB0DBA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BellmyWatchWidget; sourceTree = "<group>"; };
 		D27F47812E8410E10034A0E4 /* Archive */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Archive; sourceTree = "<group>"; };
 		D27F47822E8411500034A0E4 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		D27F47882E8421660034A0E4 /* ThirdParty */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ThirdParty; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D260D9402E9FADCB00BB0DBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260D9562E9FAF0A00BB0DBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D260D96E2E9FB26F00BB0DBA /* FirebaseMessaging in Frameworks */,
+				D260D97A2E9FB68400BB0DBA /* FirebaseFirestore in Frameworks */,
+				D260D95B2E9FAF0A00BB0DBA /* SwiftUI.framework in Frameworks */,
+				D260D95A2E9FAF0A00BB0DBA /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AF14C52D3FD7CC00A78453 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,8 +207,11 @@
 		D2AF14BF2D3FD7CC00A78453 = {
 			isa = PBXGroup;
 			children = (
+				D260D96C2E9FB1BE00BB0DBA /* BellmyWatchWidgetExtension.entitlements */,
 				D2AF14CA2D3FD7CC00A78453 /* Pokebell */,
 				D2AF14E72D40FB7000A78453 /* PokebellWidget */,
+				D260D9442E9FADCB00BB0DBA /* BellmyWatch Watch App */,
+				D260D95C2E9FAF0A00BB0DBA /* BellmyWatchWidget */,
 				D2AF14E22D40FB7000A78453 /* Frameworks */,
 				D2AF14C92D3FD7CC00A78453 /* Products */,
 			);
@@ -137,6 +222,8 @@
 			children = (
 				D2AF14C82D3FD7CC00A78453 /* Pokebell.app */,
 				D2AF14E12D40FB7000A78453 /* PokebellWidgetExtension.appex */,
+				D260D9432E9FADCB00BB0DBA /* BellmyWatch Watch App.app */,
+				D260D9592E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +280,54 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D260D9422E9FADCB00BB0DBA /* BellmyWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D260D9542E9FADCD00BB0DBA /* Build configuration list for PBXNativeTarget "BellmyWatch Watch App" */;
+			buildPhases = (
+				D260D93F2E9FADCB00BB0DBA /* Sources */,
+				D260D9402E9FADCB00BB0DBA /* Frameworks */,
+				D260D9412E9FADCB00BB0DBA /* Resources */,
+				D260D9692E9FAF0D00BB0DBA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D260D9632E9FAF0D00BB0DBA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D260D9442E9FADCB00BB0DBA /* BellmyWatch Watch App */,
+			);
+			name = "BellmyWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "BellmyWatch Watch App";
+			productReference = D260D9432E9FADCB00BB0DBA /* BellmyWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D260D9582E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D260D9662E9FAF0D00BB0DBA /* Build configuration list for PBXNativeTarget "BellmyWatchWidgetExtension" */;
+			buildPhases = (
+				D260D9552E9FAF0A00BB0DBA /* Sources */,
+				D260D9562E9FAF0A00BB0DBA /* Frameworks */,
+				D260D9572E9FAF0A00BB0DBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D260D95C2E9FAF0A00BB0DBA /* BellmyWatchWidget */,
+			);
+			name = BellmyWatchWidgetExtension;
+			packageProductDependencies = (
+				D260D96D2E9FB26F00BB0DBA /* FirebaseMessaging */,
+				D260D9792E9FB68400BB0DBA /* FirebaseFirestore */,
+			);
+			productName = BellmyWatchWidgetExtension;
+			productReference = D260D9592E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D2AF14C72D3FD7CC00A78453 /* Pokebell */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2AF14D62D3FD7D100A78453 /* Build configuration list for PBXNativeTarget "Pokebell" */;
@@ -201,11 +336,13 @@
 				D2AF14C52D3FD7CC00A78453 /* Frameworks */,
 				D2AF14C62D3FD7CC00A78453 /* Resources */,
 				D2AF14F52D40FB7100A78453 /* Embed Foundation Extensions */,
+				D260D9512E9FADCD00BB0DBA /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D2AF14F02D40FB7100A78453 /* PBXTargetDependency */,
+				D260D94F2E9FADCD00BB0DBA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D27F47812E8410E10034A0E4 /* Archive */,
@@ -261,6 +398,12 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					D260D9422E9FADCB00BB0DBA = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					D260D9582E9FAF0A00BB0DBA = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					D2AF14C72D3FD7CC00A78453 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -289,11 +432,27 @@
 			targets = (
 				D2AF14C72D3FD7CC00A78453 /* Pokebell */,
 				D2AF14E02D40FB7000A78453 /* PokebellWidgetExtension */,
+				D260D9422E9FADCB00BB0DBA /* BellmyWatch Watch App */,
+				D260D9582E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D260D9412E9FADCB00BB0DBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260D9572E9FAF0A00BB0DBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AF14C62D3FD7CC00A78453 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,6 +478,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D260D93F2E9FADCB00BB0DBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260D9552E9FAF0A00BB0DBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AF14C42D3FD7CC00A78453 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,6 +519,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D260D94F2E9FADCD00BB0DBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D260D9422E9FADCB00BB0DBA /* BellmyWatch Watch App */;
+			targetProxy = D260D94E2E9FADCD00BB0DBA /* PBXContainerItemProxy */;
+		};
+		D260D9632E9FAF0D00BB0DBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D260D9582E9FAF0A00BB0DBA /* BellmyWatchWidgetExtension */;
+			targetProxy = D260D9622E9FAF0D00BB0DBA /* PBXContainerItemProxy */;
+		};
 		D2AF14F02D40FB7100A78453 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AF14E02D40FB7000A78453 /* PokebellWidgetExtension */;
@@ -354,6 +537,130 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D260D9522E9FADCD00BB0DBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BellmyWatch Watch App/BellmyWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BellmyWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = QQZS279PYH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BellmyWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = app.kikuchi.momorin.Pokebellmy;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebellmy.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		D260D9532E9FADCD00BB0DBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BellmyWatch Watch App/BellmyWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BellmyWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = QQZS279PYH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BellmyWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = app.kikuchi.momorin.Pokebellmy;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebellmy.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
+		D260D9672E9FAF0D00BB0DBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BellmyWatchWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QQZS279PYH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BellmyWatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BellmyWatchWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebellmy.watchkitapp.BellmyWatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		D260D9682E9FAF0D00BB0DBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BellmyWatchWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QQZS279PYH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BellmyWatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BellmyWatchWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kikuchi.momorin.Pokebellmy.watchkitapp.BellmyWatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
 		D2AF14D42D3FD7D100A78453 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -608,6 +915,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D260D9542E9FADCD00BB0DBA /* Build configuration list for PBXNativeTarget "BellmyWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D260D9522E9FADCD00BB0DBA /* Debug */,
+				D260D9532E9FADCD00BB0DBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D260D9662E9FAF0D00BB0DBA /* Build configuration list for PBXNativeTarget "BellmyWatchWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D260D9672E9FAF0D00BB0DBA /* Debug */,
+				D260D9682E9FAF0D00BB0DBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2AF14C32D3FD7CC00A78453 /* Build configuration list for PBXProject "Pokebell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -674,6 +999,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		D260D96D2E9FB26F00BB0DBA /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		D260D9792E9FB68400BB0DBA /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2AF14F92D410BAB00A78453 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		D29CF14C2E27AEF5009C33FD /* WhatsNewKit */ = {
 			isa = XCSwiftPackageProductDependency;
