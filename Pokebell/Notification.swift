@@ -82,42 +82,18 @@ extension AppDelegate: MessagingDelegate {
     
 }
 extension AppDelegate: UNUserNotificationCenterDelegate {
-        func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                    willPresent notification: UNNotification,
-                                    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                }
-            completionHandler([.alert, .sound, .badge])
         }
-        func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                    didReceive response: UNNotificationResponse,
-                                    withCompletionHandler completionHandler: @escaping () -> Void) {
-            completionHandler()
-        }
+        completionHandler([.alert, .sound, .badge])
     }
-//extension AppDelegate: MessagingDelegate {
-//    @objc func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-//        print("Firebase token: \(String(describing: fcmToken))")
-//    }
-//}
-//extension AppDelegate: UNUserNotificationCenterDelegate {
-//    
-//    // フォアグラウンド通知受信時（音だけ鳴らす）
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                willPresent notification: UNNotification,
-//                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        // ポケベル風に音だけ → ロック画面には表示されない
-//        completionHandler([.sound])
-//    }
-//    
-//    // ユーザーが通知をタップした場合（今回はWidget更新には関係なし）
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                didReceive response: UNNotificationResponse,
-//                                withCompletionHandler completionHandler: @escaping () -> Void) {
-//        completionHandler()
-//    }
-//    
-//   
-//}
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+}

@@ -74,7 +74,7 @@ struct PhoneView: View {
                 .padding(.top,5)
             Text(":")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
-           
+            
             Text("\(phonenumInput)")
                 .font(.custom("x8y12pxTheStrongGamer", size: 20))
             Spacer()
@@ -112,7 +112,7 @@ struct PhoneView: View {
                         .padding(.bottom,650)
                         .padding(.horizontal,20)
                 }
-            
+                
             }
             .sheet(isPresented: $isWhatsNewPresented) {
                 WhatsNewView(whatsNew: whatsNew!)
@@ -181,12 +181,6 @@ struct PhoneView: View {
                                     .background(Color("lightgray"))
                                     .cornerRadius(35)
                                     .shadow(color: Color("pokepink"),radius: 5)
-//                                Image(systemName: "arrow.clockwise")
-//                                    .foregroundColor(Color("blackgray"))
-//                                    .frame(width: 60, height: 60)
-//                                    .background(Color("lightgray"))
-//                                    .cornerRadius(35)
-//                                    .shadow(color: Color("pokepink"),radius: 5)
                                 
                             }
                             Button {
@@ -235,7 +229,7 @@ struct PhoneView: View {
                 .padding()
             }
         }
-//        .sheet(whatsNew: self.$whatsNew)
+        //        .sheet(whatsNew: self.$whatsNew)
         .task {
             try? Tips.configure([
                 .displayFrequency(.immediate),

@@ -101,21 +101,15 @@ struct MessageView: View {
                             }
                         }
                     }
-                    
-                //                    .onChange(of: filteredMessages){
-                //
-                //                        WidgetCenter.shared.reloadAllTimelines()
-                //
-                //                    }
-                .navigationBarTitleTextColor(Color("blackgray"))
-                .navigationTitle(phoneNumber)
-                .foregroundColor(Color("blackgray"))
-                .font(.custom("x8y12pxTheStrongGamer", size: 15))
-                .onDisappear {
-                    print("testt")
-                    
-                    WidgetCenter.shared.reloadAllTimelines()
-                }
+                    .navigationBarTitleTextColor(Color("blackgray"))
+                    .navigationTitle(phoneNumber)
+                    .foregroundColor(Color("blackgray"))
+                    .font(.custom("x8y12pxTheStrongGamer", size: 15))
+                    .onDisappear {
+                        print("testt")
+                        
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
                 }
             }
         }
@@ -135,11 +129,6 @@ struct MessageView: View {
             do {
                 // Firestoreからメッセージを削除
                 try await FirestoreClient.deleteMessage(id: messageId)
-                
-                // ローカルのメッセージリストから削除
-                //                if let index = messages.firstIndex(where: { $0.id == messageId }) {
-                //                    messageModel.messages.remove(at: index)
-                //                }
             } catch {
                 print("Error deleting message: \(error.localizedDescription)")
             }
@@ -163,15 +152,15 @@ struct MessageView: View {
             }
         }
     }
-    }
+}
 extension View {
-        func navigationBarTitleTextColor(_ color: Color) -> some View {
-            let uiColor = UIColor(color)
-            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
-            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
-            return self
-        }
+    func navigationBarTitleTextColor(_ color: Color) -> some View {
+        let uiColor = UIColor(color)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: UIFont(name: "x8y12pxTheStrongGamer", size: 30)!]
+        return self
     }
+}
 
-    
+
 
