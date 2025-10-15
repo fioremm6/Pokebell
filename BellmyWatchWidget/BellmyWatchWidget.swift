@@ -36,7 +36,7 @@ struct MessageEntry: TimelineEntry {
     let date: Date = .now
     let sender: String
     let message: String
-    static let placeholder = Self(sender: "jhjhjh", message: "66666")
+    static let placeholder = Self(sender: "", message: "send message")
 }
 
 struct BellmyWatchWidgetEntryView : View {
@@ -46,62 +46,67 @@ struct BellmyWatchWidgetEntryView : View {
 
     var body: some View {
         VStack {
-            Text(entry.message)
-                .font(.custom("x8y12pxTheStrongGamer", size: 20))
             ZStack {
-                Color("pink3")
-                    .edgesIgnoringSafeArea(.all)
-                let selectedColor = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
-                let selectedSticker = appGroupUserDefaults.string(forKey: "WidgetSticker") ?? "red.st"
-                Color(selectedColor)
-                    .edgesIgnoringSafeArea(.all)
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("blackgray"))
-                    .overlay {
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(Color("pokegreen"))
-                                .overlay {
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: "antenna.radiowaves.left.and.right")
-                                            Image(systemName: "bell.fill")
-                                            Spacer()
-                                            Image(systemName: "speaker.wave.3.fill")
-                                            Image(systemName: "music.note")
-                                            
-                                        }
-                                        .font(.system(size: 15))
-                                        .foregroundColor(Color("blackgray"))
-                                        .padding(.horizontal, 15)
-                                        HStack {
-                                            Text(entry.message)
-                                            Text("-")
-                                            Text(entry.sender)
-                                            
-                                        }
-                                        .foregroundStyle(Color("blackgray"))
-                                        .font(.system(size: 5))
-//                                        .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                                        .padding([.horizontal, .bottom], 4)
-                                        
-                                    }
-                                }
-                                .padding([.horizontal, .top], 10)
-                                .padding(.bottom, 10)
-                        }
-                        .padding([.horizontal, .top], 10)
-                        .padding(.bottom, 60)
-                Image(selectedSticker)
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .rotationEffect(.degrees(-10))
-                    .padding(.trailing, 200)
-                    .padding(.top,70)
-                   
-            
+                Text(entry.message)
+                    .foregroundColor(Color("blackgray"))
+                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
             }
-            .scaleEffect(0.68)
-            .offset(y: 5)
+            
+          
+//            ZStack {
+//                Color("pink3")
+//                    .edgesIgnoringSafeArea(.all)
+//                let selectedColor = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
+//                let selectedSticker = appGroupUserDefaults.string(forKey: "WidgetSticker") ?? "red.st"
+//                Color(selectedColor)
+//                    .edgesIgnoringSafeArea(.all)
+//                RoundedRectangle(cornerRadius: 20)
+//                    .fill(Color("blackgray"))
+//                    .overlay {
+//                            RoundedRectangle(cornerRadius: 15)
+//                                .fill(Color("pokegreen"))
+//                                .overlay {
+//                                    VStack {
+//                                        HStack {
+//                                            Image(systemName: "antenna.radiowaves.left.and.right")
+//                                            Image(systemName: "bell.fill")
+//                                            Spacer()
+//                                            Image(systemName: "speaker.wave.3.fill")
+//                                            Image(systemName: "music.note")
+//                                            
+//                                        }
+//                                        .font(.system(size: 15))
+//                                        .foregroundColor(Color("blackgray"))
+//                                        .padding(.horizontal, 15)
+//                                        HStack {
+//                                            Text(entry.message)
+//                                            Text("-")
+//                                            Text(entry.sender)
+//                                            
+//                                        }
+//                                        .foregroundStyle(Color("blackgray"))
+//                                        .font(.system(size: 5))
+////                                        .font(.custom("x8y12pxTheStrongGamer", size: 20))
+//                                        .padding([.horizontal, .bottom], 4)
+//                                        
+//                                    }
+//                                }
+//                                .padding([.horizontal, .top], 10)
+//                                .padding(.bottom, 10)
+//                        }
+//                        .padding([.horizontal, .top], 10)
+//                        .padding(.bottom, 60)
+//                Image(selectedSticker)
+//                    .resizable()
+//                    .frame(width: 80, height: 80)
+//                    .rotationEffect(.degrees(-10))
+//                    .padding(.trailing, 200)
+//                    .padding(.top,70)
+//                   
+//            
+//            }
+//            .scaleEffect(0.68)
+//            .offset(y: 5)
         }
     }
 }

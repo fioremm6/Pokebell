@@ -7,6 +7,8 @@
 
 import WidgetKit
 import SwiftUI
+import AppIntents
+
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> MessageEntry {
         .placeholder
@@ -21,7 +23,7 @@ struct Provider: TimelineProvider {
             do {
                 let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
                 let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
-                UserDefaultsKey[.saishinMessage] = messages.first?.text ?? "000000000"
+//                UserDefaultsKey[.saishinMessage] = messages.first?.text ?? "000000000"
                 if let latest = messages.first {
                     let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
                     let oldMessage = defaults?.string(forKey: "latestMessage")
@@ -116,7 +118,14 @@ struct PokebellWidgetEntryView : View {
                     .rotationEffect(.degrees(-10))
                     .padding(.trailing, 200)
                     .padding(.top,70)
-                   
+                Button(intent: ReloadIntent()) {
+                                Image(systemName: "button.programmable")
+                        .resizable()
+                                    .frame(width: 40, height:40)
+                                    .padding(.leading, 200)
+                                    .padding(.top, 100)
+                                    .foregroundColor(Color("blackgray"))
+                            }
             
             }
         }
@@ -124,6 +133,34 @@ struct PokebellWidgetEntryView : View {
 }
 
 
+struct ReloadIntent: AppIntent {
+    static var title: LocalizedStringResource = "Reload"
+    static var description = IntentDescription("Reload Widget View")
+    func perform() async throws -> some IntentResult {
+        let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
+        let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
+        //                UserDefaultsKey[.saishinMessage] = messages.first?.text ?? "000000000"
+        if let latest = messages.first {
+            let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
+            let oldMessage = defaults?.string(forKey: "latestMessage")
+            if oldMessage != latest.text {
+                defaults?.set(latest.text, forKey: "latestMessage")
+                defaults?.set(latest.sender, forKey: "latestSender")
+                
+                let content = UNMutableNotificationContent()
+                content.sound = UNNotificationSound(named: .init("sound.caf"))
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+                try await UNUserNotificationCenter.current().add(request)
+            }
+            
+            let entry = MessageEntry(sender: latest.sender, message: latest.text)
+            //            completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
+            
+        }
+        return.result()
+    }
+}
+    
 
 
 struct PokebellWidget: Widget {

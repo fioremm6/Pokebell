@@ -95,6 +95,7 @@ struct CustomView: View {
                 }
                 .padding(2)
             }
+            .scrollIndicators(.visible)
             .padding(.horizontal,30)
             
             Spacer()

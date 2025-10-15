@@ -37,28 +37,18 @@ struct MessageView: View {
                 NavigationView {
                     List {
                         ForEach(filteredMessages, id: \.self) { message in
-                            HStack {
-                                Image(systemName: "envelope.fill")
-                                Text(message.text)
-                                    .padding(.bottom, 5)
-                                Spacer()
-                                Image(systemName: "phone.fill")
-                                Text(message.sender)
-                                    .padding(.bottom, 5)
-                            }
-                            .swipeActions {
-                                // 削除アクション
-                                Button {
-                                    deleteMessage(message) // メッセージを削除
-                                } label: {
-                                    Image(systemName: "trash.fill") // SFSymbolのゴミ箱アイコン
+                           HStack {
+                                    Image(systemName: "envelope.fill")
+                                    Text(message.text)
+                                        .padding(.bottom,5)
+                                    Spacer()
+                                    Image(systemName: "phone.fill")
+                                    Text(message.sender)
+                                        .padding(.bottom,5)
                                 }
-                                .tint(.red) // 削除ボタンの色を赤に設定
-                            }
+                            
                         }
-                        .onDelete(perform: deleteMessages) // スワイプで削除できるようにする
                     }
-                    //            .listStyle(.plain)
                     .onChange(of: filteredMessages) { newMessages in
                         guard let latest = newMessages.first else { return }
                         
