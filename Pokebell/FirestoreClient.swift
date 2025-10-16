@@ -26,11 +26,8 @@ class FirestoreClient {
     static func deleteMessage(id: String) async throws {
         let messageRef = Firestore.firestore().collection("messages").document(id)
         
-        // ドキュメントを削除
         try await messageRef.delete()
     }
-    
-    // 複数のメッセージを削除するメソッド
     static func deleteMessages(ids: [String]) async throws {
         for id in ids {
             let messageRef = Firestore.firestore().collection("messages").document(id)

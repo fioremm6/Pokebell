@@ -15,7 +15,7 @@ struct HintView: View {
     @State private var hintnumbertext = ""
     @State private var hintmeantext = ""
     
-    // UserDefaultsから電話番号と名前を配列で読み込む
+    
     @AppStorage("hints", store: UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) private var hintsData: Data = Data()
     
     var body: some View {
@@ -40,7 +40,7 @@ struct HintView: View {
                         .font(.system(size: 15))
                         HStack {
                             Button {
-                                // キャンセルボタンを押した場合、何もしない
+                                
                                 isHintPresented = false
                                 hintnumbertext = ""
                                 hintmeantext = ""
@@ -48,7 +48,6 @@ struct HintView: View {
                                 Text("キャンセル")
                             }
                             Button {
-                                // 入力された電話番号と名前をUserDefaultsに保存
                                 saveHint(phone: hintnumbertext, name: hintmeantext)
                                 isHintPresented = false
                                 hintnumbertext = ""
@@ -64,31 +63,55 @@ struct HintView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 List {
+                    HStack {
+                        Text("0840")
+                        Spacer()
+                        Text("おはよう")
+                    }
+                    HStack {
+                        Text("3476")
+                        Spacer()
+                        Text("さよなら")
+                    }
+                    HStack {
+                        Text("0833")
+                        Spacer()
+                        Text("おやすみ")
+                    }
+                    HStack {
+                        Text("999")
+                        Spacer()
+                        Text("サンキュー")
+                    }
+                    HStack {
+                        Text("114106")
+                        Spacer()
+                        Text("あいしてる")
+                    }
                     ForEach(loadHints(), id: \.self) { hint in
                         HStack {
-//                            Image(systemName: "person.fill")
                             Text(hint.number)
                                 .padding(.bottom, 5)
                             Spacer()
-//                            Image(systemName: "phone.fill")
                             Text(hint.mean)
                                 .padding(.bottom, 5)
                         }
                         .padding(5)
                         .swipeActions {
-                                                    // 削除アクション
-                                                    Button {
-                                                        deleteHint(at: IndexSet([loadHints().firstIndex(where: { $0.id == hint.id })!]))
-                                                    } label: {
-                                                        Image(systemName: "trash.fill") // SFSymbolを使う
-                                                            .foregroundColor(.white)
-                                                    }
-                                                    .tint(.red) // 削除ボタンの色を赤に設定
-                                                }
+                            
+                            Button {
+                                deleteHint(at: IndexSet([loadHints().firstIndex(where: { $0.id == hint.id })!]))
+                            } label: {
+                                Image(systemName: "trash.fill")
+                                    .foregroundColor(.white)
+                            }
+                            .tint(.red)
+                        }
                     }
                     
-                    /*.onDelete(perform: deleteFriend)*/ // スワイプで削除
+                    
                 }
+                
                 
             }
             .listStyle(.plain)
@@ -97,32 +120,22 @@ struct HintView: View {
             .font(.custom("x8y12pxTheStrongGamer", size: 15))
         }
     }
-    
-    // 友達を保存するメソッド
     private func saveHint(phone: String, name: String) {
         var currentHints = loadHints()
         currentHints.append(Hint(number: hintnumbertext, mean: hintmeantext))
-        
-        // 保存するデータをエンコード
         if let encoded = try? JSONEncoder().encode(currentHints) {
             hintsData = encoded
         }
     }
-    
-    // 保存された友達データを読み込むメソッド
     private func loadHints() -> [Hint] {
         if let decoded = try? JSONDecoder().decode([Hint].self, from: hintsData) {
             return decoded
         }
         return []
     }
-
-    // 友達を削除するメソッド
     private func deleteHint(at offsets: IndexSet) {
         var currentHints = loadHints()
-        currentHints.remove(atOffsets: offsets) // 指定された位置のアイテムを削除
-        
-        // 更新されたデータを再度保存
+        currentHints.remove(atOffsets: offsets)
         if let encoded = try? JSONEncoder().encode(currentHints) {
             hintsData = encoded
         }
@@ -136,32 +149,3 @@ struct Hint: Identifiable, Codable, Hashable {
 }
 
 
-//            List {
-//                HStack {
-//                    Text("084")
-//                    Spacer()
-//                    Text("おはよう")
-//                }
-//                HStack {
-//                    Text("3476")
-//                    Spacer()
-//                    Text("さよなら")
-//                }
-//                HStack {
-//                    Text("0833")
-//                    Spacer()
-//                    Text("おやすみ")
-//                }
-//                HStack {
-//                    Text("999")
-//                    Spacer()
-//                    Text("サンキュー")
-//                }
-//                HStack {
-//                    Text("114106")
-//                    Spacer()
-//                    Text("あいしてる")
-//                }
-//            }
-           
-           

@@ -101,7 +101,7 @@ struct CustomView: View {
             Spacer()
             Spacer()
             
-//            .padding(.bottom,330)
+
             
             
         }

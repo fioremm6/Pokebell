@@ -21,6 +21,8 @@ struct MessageView: View {
     
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
     @State private var lastMessageCount = 0
+    @State private var isShowingAddressView = false
+    @State private var phoneNumInput = ""
     
     var filteredMessages: [Message] {
         messages
@@ -31,112 +33,117 @@ struct MessageView: View {
     }
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Color("pink3")
-                .ignoresSafeArea()
             VStack {
-                NavigationView {
-                    List {
-                        ForEach(filteredMessages, id: \.self) { message in
-                           HStack {
-                                    Image(systemName: "envelope.fill")
-                                    Text(message.text)
-                                        .padding(.bottom,5)
-                                    Spacer()
-                                    Image(systemName: "phone.fill")
-                                    Text(message.sender)
-                                        .padding(.bottom,5)
-                                }
-                            
-                        }
+                HStack {
+                    Text(phoneNumber)
+                        .font(.custom("x8y12pxTheStrongGamer", size: 30))
+                        .foregroundColor(Color("blackgray"))
+                    Spacer()
+                    Button {
+                        isShowingAddressView = true
+                    } label: {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color("blackgray"))
+                            .padding(.top,10)
                     }
-                    .onChange(of: filteredMessages) { newMessages in
-                        guard let latest = newMessages.first else { return }
+                    .sheet(isPresented: $isShowingAddressView) {
+                        AddressView(phoneNumInput: $phoneNumInput)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.top, 20)
+                
+                List {
+                    ForEach(filteredMessages, id: \.self) { message in
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                            Text(message.text)
+                                .padding(.bottom,5)
+                            Spacer()
+                            Image(systemName: "phone.fill")
+                            Text(message.sender)
+                                .padding(.bottom,5)
+                        }
                         
-                        // 前回の最新メッセージと比較
-                        let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
-                        let oldMessage = defaults?.string(forKey: "latestMessage")
+                    }
+                }
+                .onChange(of: filteredMessages) { newMessages in
+                    guard let latest = newMessages.first else { return }
+                    let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
+                    let oldMessage = defaults?.string(forKey: "latestMessage")
+                    
+                    if oldMessage != latest.text {
+                        defaults?.set(latest.text, forKey: "latestMessage")
+                        defaults?.set(latest.sender, forKey: "latestSender")
+                        WidgetCenter.shared.reloadAllTimelines()
                         
-                        if oldMessage != latest.text {
-                            defaults?.set(latest.text, forKey: "latestMessage")
-                            defaults?.set(latest.sender, forKey: "latestSender")
-                            
-                            // Widgetも更新
-                            WidgetCenter.shared.reloadAllTimelines()
-                            
-                            // 通知音とバナー
-                            let content = UNMutableNotificationContent()
-                            content.title = latest.sender   // 送り主
-                            content.body = latest.text      // メッセージ本文
-                            content.sound = UNNotificationSound(named: .init("bellmysound6.caf"))
-                            content.userInfo = ["source": "appMessage"] // 必要なら識別用
-                            
-                            let request = UNNotificationRequest(
-                                identifier: UUID().uuidString,
-                                content: content,
-                                trigger: nil // 即時通知
-                            )
-                            UNUserNotificationCenter.current().add(request)
-                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                            //                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            //                                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                            //                            }
-                            let numberOfVibrations = 6
-                            let totalDuration: TimeInterval = 4
-                            let interval = totalDuration / Double(numberOfVibrations) // 3秒÷5回 = 0.6秒ごと
-                            
-                            for i in 0..<numberOfVibrations {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + interval * Double(i)) {
-                                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                                }
+                        let content = UNMutableNotificationContent()
+                        content.title = latest.sender
+                        content.body = latest.text
+                        content.sound = UNNotificationSound(named: .init("bellmysound6.caf"))
+                        content.userInfo = ["source": "appMessage"]
+                        let request = UNNotificationRequest(
+                            identifier: UUID().uuidString,
+                            content: content,
+                            trigger: nil
+                        )
+                        UNUserNotificationCenter.current().add(request)
+                        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                        
+                        let numberOfVibrations = 6
+                        let totalDuration: TimeInterval = 4
+                        let interval = totalDuration / Double(numberOfVibrations)
+                        
+                        for i in 0..<numberOfVibrations {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + interval * Double(i)) {
+                                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                             }
                         }
                     }
-                    .navigationBarTitleTextColor(Color("blackgray"))
-                    .navigationTitle(phoneNumber)
-                    .foregroundColor(Color("blackgray"))
-                    .font(.custom("x8y12pxTheStrongGamer", size: 15))
-                    .onDisappear {
-                        print("testt")
-                        
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }
+                }
+                .foregroundColor(Color("blackgray"))
+                .font(.custom("x8y12pxTheStrongGamer", size: 15))
+                .onDisappear {
+                    print("testt")
+                    
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
             }
+            
         }
     }
     
     
-    // メッセージを削除するメソッド
+    
     private func deleteMessage(_ filteredMessages: Message) {
-        // メッセージのIDがnilでないか確認
+        
         guard let messageId = filteredMessages.id else {
             print("Message ID is nil, cannot delete message.")
             return
         }
         
-        // Firestoreからも削除する処理を追加
+        
         Task {
             do {
-                // Firestoreからメッセージを削除
+                
                 try await FirestoreClient.deleteMessage(id: messageId)
             } catch {
                 print("Error deleting message: \(error.localizedDescription)")
             }
         }
     }
-    // スワイプ削除用のメソッド
+    
     private func deleteMessages(at offsets: IndexSet) {
-        // 削除対象のメッセージを取得
+        
         let messagesToDelete = offsets.map { filteredMessages[$0] }
         
-        // Firestoreからも削除
         Task {
             do {
-                // Firestoreからメッセージを削除
+                
                 try await FirestoreClient.deleteMessages(ids: messagesToDelete.map { $0.id! })
                 
-                // ローカルのメッセージリストから削除
-                //                messageModel.messages.remove(atOffsets: offsets)
+                
             } catch {
                 print("Error deleting messages: \(error.localizedDescription)")
             }

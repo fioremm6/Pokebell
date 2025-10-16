@@ -18,7 +18,7 @@ struct PhoneView: View {
     @State private var errorMessage: String? = nil
     @FocusState private var isFocused: Bool
     @State private var isWhatsNewPresented = false
-    
+    @State private var isShowingHintView = false
     
     
     @AppStorage(UserDefaultsKey.phoneNumber.rawValue, store: .init(suiteName: "group.app.kikuchi.momorin.Pokebellmy")) var phoneNumber = ""
@@ -61,7 +61,6 @@ struct PhoneView: View {
                 subtitle: "公衆電話からポケベルにメッセージを送っていた時代、最後に＃＃をつけることでメッセージを送ることができました。このアプリではそこまで再現しています！"
                 
             )
-            // ...
         ]
     )
     
@@ -102,6 +101,18 @@ struct PhoneView: View {
             Color("pink3")
                 .edgesIgnoringSafeArea(.all)
             HStack {
+                Button {
+                    isShowingHintView = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(Color("blackgray"))
+                        .font(.system(size: 25))
+                        .padding(.bottom,650)
+                        .padding(.horizontal,20)
+                }
+                .sheet(isPresented: $isShowingHintView) {
+                    HintView()
+                }
                 Spacer()
                 Button {
                     isWhatsNewPresented = true
@@ -112,10 +123,10 @@ struct PhoneView: View {
                         .padding(.bottom,650)
                         .padding(.horizontal,20)
                 }
+                .sheet(isPresented: $isWhatsNewPresented) {
+                    WhatsNewView(whatsNew: whatsNew!)
+                }
                 
-            }
-            .sheet(isPresented: $isWhatsNewPresented) {
-                WhatsNewView(whatsNew: whatsNew!)
             }
             VStack {
                 ZStack {
@@ -229,7 +240,6 @@ struct PhoneView: View {
                 .padding()
             }
         }
-        //        .sheet(whatsNew: self.$whatsNew)
         .task {
             try? Tips.configure([
                 .displayFrequency(.immediate),
@@ -241,8 +251,6 @@ struct PhoneView: View {
     
     
     private func handleInput(_ number: String) {
-        //        guard let UserDefaults(suiteName: "group.Pokebell")?.object(forKey: "number")
-        
         if phonenumInput.count >= 11 {
             textnumInput.append(number)
         } else {
@@ -265,7 +273,6 @@ struct PhoneView: View {
             textnumInput = ""
             
         } else {
-            //
             Task {
                 do {
                     
@@ -280,10 +287,6 @@ struct PhoneView: View {
             }
             
         }
-        
-        
-        
-        //               messageModel.messages.append(currentInput)
     }
     
     private func deleteInput() {
@@ -303,12 +306,7 @@ struct PhoneView: View {
         textnumInput = ""
         errorMessage = nil
     }
-    private func showHint() {
-        
-    }
-    private func showAddress() {
-        
-    }
+    
     
 }
 

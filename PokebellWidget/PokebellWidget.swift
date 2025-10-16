@@ -23,7 +23,6 @@ struct Provider: TimelineProvider {
             do {
                 let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
                 let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
-//                UserDefaultsKey[.saishinMessage] = messages.first?.text ?? "000000000"
                 if let latest = messages.first {
                     let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
                     let oldMessage = defaults?.string(forKey: "latestMessage")
@@ -66,72 +65,84 @@ struct PokebellWidgetEntryView : View {
     var entry: Provider.Entry
     @State private var offset: CGFloat = UIScreen.main.bounds.width
     
+    
+    
     var body: some View {
         VStack {
         }
         .containerBackground(for: .widget) {
             ZStack {
-                Color("pink3")
+                Rectangle()
+                    .fill(Color("pink3").shadow(.inner(color: .white.opacity(0.7), radius: 4, x: -4, y: -4)))
                     .edgesIgnoringSafeArea(.all)
                 let selectedColor = appGroupUserDefaults.string(forKey: "WidgetColor") ?? "pink3"
                 let selectedSticker = appGroupUserDefaults.string(forKey: "WidgetSticker") ?? "red.st"
-                Color(selectedColor)
+                Rectangle()
+                    .fill(Color(selectedColor).shadow(.inner(color: .white.opacity(0.7), radius: 4, x: -4, y: -4)))
                     .edgesIgnoringSafeArea(.all)
+                
+                
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color("blackgray"))
                     .overlay {
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(Color("pokegreen"))
-                                .overlay {
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: "antenna.radiowaves.left.and.right")
-                                            Image(systemName: "bell.fill")
-                                            Spacer()
-                                            Image(systemName: "speaker.wave.3.fill")
-                                            Image(systemName: "music.note")
-                                            
-                                        }
-                                        .font(.system(size: 15))
-                                        .foregroundColor(Color("blackgray"))
-                                        .padding(.horizontal, 15)
-                                        HStack {
-                                            Text(entry.message)
-                                            Text("-")
-                                            Text(entry.sender)
-                                            
-                                        }
-                                        .foregroundStyle(Color("blackgray"))
-                                        .font(.custom("x8y12pxTheStrongGamer", size: 20))
-                                        .padding([.horizontal, .bottom], 4)
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill (
+                                Color("pokegreen")
+                                    .shadow(.inner(color: .white.opacity(0.4), radius: 3, x: -2, y: -2))
+                            )
+                            .overlay {
+                                VStack {
+                                    HStack {
+                                        Image(systemName: "antenna.radiowaves.left.and.right")
+                                        Image(systemName: "bell.fill")
+                                        Spacer()
+                                        Image(systemName: "speaker.wave.3.fill")
+                                        Image(systemName: "music.note")
                                         
                                     }
+                                    .font(.system(size: 15))
+                                    .foregroundColor(Color("blackgray"))
+                                    .padding(.horizontal, 15)
+                                    HStack {
+                                        Text(entry.message)
+                                        Text("-")
+                                        Text(entry.sender)
+                                        
+                                    }
+                                    .foregroundStyle(Color("blackgray"))
+                                    .font(.custom("x8y12pxTheStrongGamer", size: 20))
+                                    .padding([.horizontal, .bottom], 4)
+                                    
                                 }
-                                .padding([.horizontal, .top], 10)
-                                .padding(.bottom, 10)
-                        }
-                        .padding([.horizontal, .top], 10)
-                        .padding(.bottom, 60)
+                            }
+                            .padding([.horizontal, .top], 10)
+                            .padding(.bottom, 10)
+                    }
+                    .padding([.horizontal, .top], 10)
+                    .padding(.bottom, 60)
                 Image(selectedSticker)
                     .resizable()
                     .frame(width: 80, height: 80)
                     .rotationEffect(.degrees(-10))
                     .padding(.trailing, 200)
                     .padding(.top,70)
+                
                 Button(intent: ReloadIntent()) {
-                                Image(systemName: "button.programmable")
+                    Image(systemName: "arrow.clockwise.circle.fill")
                         .resizable()
-                                    .frame(width: 40, height:40)
-                                    .padding(.leading, 200)
-                                    .padding(.top, 100)
-                                    .foregroundColor(Color("blackgray"))
-                            }
-            
+                        .frame(width: 30, height:30)
+                        .padding(.leading, 250)
+                        .padding(.top, 100)
+                        .foregroundColor(Color("blackgray"))
+                        .shadow(color: .gray, radius: 2, x: 3, y: 3)
+                    
+                    
+                }
+                .buttonStyle(.plain)
             }
         }
     }
 }
-
 
 struct ReloadIntent: AppIntent {
     static var title: LocalizedStringResource = "Reload"
@@ -139,7 +150,6 @@ struct ReloadIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         let phoneNumber: String = UserDefaultsKey[.phoneNumber] ?? ""
         let messages = try await FirestoreClient.fetchMessage(myNumber: phoneNumber)
-        //                UserDefaultsKey[.saishinMessage] = messages.first?.text ?? "000000000"
         if let latest = messages.first {
             let defaults = UserDefaults(suiteName: "group.app.kikuchi.momorin.Pokebellmy")
             let oldMessage = defaults?.string(forKey: "latestMessage")
@@ -154,13 +164,12 @@ struct ReloadIntent: AppIntent {
             }
             
             let entry = MessageEntry(sender: latest.sender, message: latest.text)
-            //            completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
             
         }
         return.result()
     }
 }
-    
+
 
 
 struct PokebellWidget: Widget {

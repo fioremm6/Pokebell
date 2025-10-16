@@ -15,22 +15,22 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            PhoneView()
-                .tabItem {
-                    Label("send", systemImage: "square.and.pencil")
-                }
-                .environmentObject(messageModel) // 共有データ
             CustomView()
                 .tabItem {
-                    Label("custom", systemImage: "plus.circle.fill")
+                    Label("Custom", systemImage: "paintpalette")
                 }
-                .environmentObject(messageModel) // 共有データ
+                .environmentObject(messageModel)
+            PhoneView()
+                .tabItem {
+                    Label("Send", systemImage: "paperplane")
+                }
+                .environmentObject(messageModel)
             
             MessageView()
                 .tabItem {
-                    Label("message", systemImage: "list.bullet")
+                    Label("Message", systemImage: "message")
                 }
-                .environmentObject(messageModel) // 共有データ
+                .environmentObject(messageModel) 
         }
         .accentColor(Color("blackgray"))
     }

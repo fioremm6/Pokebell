@@ -59,12 +59,6 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             defaults?.set(sender, forKey: "latestSender")
             
             WidgetCenter.shared.reloadAllTimelines()
-            
-            //            let content = UNMutableNotificationContent()
-            //            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "pager.caf"))
-            //            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
-            //            UNUserNotificationCenter.current().add(request)
-            //        }
             if oldMessage != message {
                 let content = UNMutableNotificationContent()
                 content.title = sender
