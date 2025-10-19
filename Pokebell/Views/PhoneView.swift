@@ -102,19 +102,6 @@ struct PhoneView: View {
                 .edgesIgnoringSafeArea(.all)
             HStack {
                 Button {
-                    isShowingHintView = true
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(Color("blackgray"))
-                        .font(.system(size: 25))
-                        .padding(.bottom,650)
-                        .padding(.horizontal,20)
-                }
-                .sheet(isPresented: $isShowingHintView) {
-                    HintView()
-                }
-                Spacer()
-                Button {
                     isWhatsNewPresented = true
                 } label: {
                     Image(systemName: "questionmark.circle")
@@ -126,8 +113,22 @@ struct PhoneView: View {
                 .sheet(isPresented: $isWhatsNewPresented) {
                     WhatsNewView(whatsNew: whatsNew!)
                 }
+                Spacer()
+                Button {
+                    isShowingHintView = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(Color("blackgray"))
+                        .font(.system(size: 25))
+                        .padding(.bottom,650)
+                        .padding(.horizontal,20)
+                }
+                .sheet(isPresented: $isShowingHintView) {
+                    HintView()
+                }
                 
             }
+            .padding(.horizontal, 10)
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)

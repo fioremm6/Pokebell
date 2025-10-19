@@ -131,13 +131,13 @@ struct PokebellWidgetEntryView : View {
                     Image(systemName: "arrow.clockwise.circle.fill")
                         .resizable()
                         .frame(width: 30, height:30)
-                        .padding(.leading, 250)
-                        .padding(.top, 100)
                         .foregroundColor(Color("blackgray"))
                         .shadow(color: .gray, radius: 2, x: 3, y: 3)
                     
                     
                 }
+                .padding(.leading, 250)
+                .padding(.top, 100)
                 .buttonStyle(.plain)
             }
         }
